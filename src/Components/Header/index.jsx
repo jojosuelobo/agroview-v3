@@ -16,7 +16,7 @@ export default function Header() {
         <input type="text" placeholder='Procurar' />
       </div>
       <div className={styles.logout}>
-        <Link to={'/register'}><a>Sair</a></Link>
+        <Link to={'/register'}>Sair</Link>
       </div>
     </nav>
   )
