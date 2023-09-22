@@ -8,7 +8,7 @@ export default function Profile() {
       <div className={styles.form_header}>
         <img src={PIC} alt="profile" />
         <h1>JOÃO CLÁUDIO</h1>
-        <button>Editar Perfil</button>
+        <button onClick={console.log('click')}>Editar Perfil</button>
       </div>
       <div className={styles.form}>
         <label>
