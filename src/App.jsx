@@ -8,7 +8,13 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 // Pages
 import Dashboard from './Pages/Dashboard'
+import Log from './Pages/Log'
+import Profile from './Pages/Profile'
+import Notifications from './Pages/Notifications'
+import Settings from './Pages/Settings'
+
 import Login from './Pages/Login'
+import Register from './Pages/Register'
 
 // Components
 import Header from './Components/Header'
@@ -24,6 +30,10 @@ function App() {
         <div className="container">
           <Routes>
             <Route path='/' element={<Dashboard />}/>
+            <Route path='/log' element={<Log />}/>
+            <Route path='/profile' element={<Profile />}/>
+            <Route path='/notifications' element={<Notifications />}/>
+            <Route path='/settings' element={<Settings />}/>
           </Routes>
         </div>
       </BrowserRouter>
