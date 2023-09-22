@@ -1,0 +1,7 @@
+.App {
+  min-height: 100vh;
+}
+.container {
+  min-height: 100vh;
+  display: flex;
+}

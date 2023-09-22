@@ -1,0 +1,120 @@
+.login {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: 0.75rem;
+  display: grid;
+  grid-template-columns: 1.1fr 2fr;
+}
+
+.design {
+  max-width: 100%;
+  height: 90vh;
+  position: absolute;
+  opacity: 0.8;
+  opacity: 0;
+  opacity: 0.2;
+  opacity: 0.5;
+}
+
+.cover {
+  height: 87vh;
+  display: flex;
+  justify-content: center;
+  background-color: var(--bg-g);
+  @media screen and (max-width: 1250px) {
+    display: none;
+  }
+}
+
+.logo {
+  width: 33rem;
+}
+
+.formCon {
+  padding: 8.2rem 11rem;
+  @media screen and (max-width: 1250px) {
+    padding: 0;
+    margin: auto;
+  }
+}
+
+.form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.title {
+  font-size: 1.86rem;
+  margin-bottom: 0.85rem;
+}
+
+.inputControl {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  position: relative;
+
+  label {
+    font-size: 0.85rem;
+    margin-bottom: 0.35rem;
+    color: var(--text-g);
+  }
+
+  input {
+    padding: 0.85rem;
+    font-size: 0.85rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .showPassBtn {
+    position: absolute;
+    cursor: pointer;
+    right: 0.85rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &:nth-child(3) {
+    margin-bottom: 0rem;
+  }
+}
+
+.forgetPassLink {
+  color: var(--text-b);
+  font-weight: bold;
+  font-size: 0.85rem;
+  margin-bottom: 0.35rem;
+}
+
+.showPassBtn:hover {
+  opacity: 0.5;
+}
+
+.submitBtn {
+  padding: 0.7rem;
+  border-radius: 4px;
+  font-size: 1.4rem;
+  border: none;
+  color: #fff;
+  background-color: var(--bg-g);
+  width: 18.5rem;
+
+  &:hover {
+    opacity: 0.75;
+  }
+}
+
+.signupLink {
+  color: var(--text-g);
+  margin-top: 0.25rem;
+  font-size: 0.87rem;
+  span {
+    color: var(--text-b);
+    margin-left: 0.25rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}

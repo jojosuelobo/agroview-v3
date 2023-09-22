@@ -1,20 +1,28 @@
-*{
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+* {
   padding: 0;
   margin: 0;
 }
+:root {
+  --bg-g: #003024;
+  --text-b: #668faf;
+  --text-g: #5b5a60;
+  --text-l: #c1f0de;
+  font-family: "Roboto", sans-serif;
+}
 
-ul{
+ul {
   list-style-type: none;
 }
 
-li{
+li {
   text-decoration: none;
 }
 
-a{
+a {
   text-decoration: none;
 }
-a:visited{
+a:visited {
   text-decoration: none;
   color: black;
 }
