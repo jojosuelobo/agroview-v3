@@ -1,8 +1,29 @@
 /* eslint-disable no-unused-vars */
 import styles from './Profile.module.sass'
+import PIC from '../../../public/profile.png'
 
 export default function Profile() {
   return (
-    <h1>Profile</h1>
+    <div className={styles.section}>
+      <div className={styles.form_header}>
+        <img src={PIC} alt="profile" />
+        <h1>JOÃO CLÁUDIO</h1>
+        <button>Editar Perfil</button>
+      </div>
+      <div className={styles.form}>
+        <label>
+          Email
+          <input type="text" />
+        </label>
+        <label>
+          Telefone
+          <input type="text" />
+        </label>
+        <label>
+          Senha
+          <input type="password" />
+        </label>
+      </div>
+    </div>
   )
 }
