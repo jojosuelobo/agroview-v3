@@ -1,4 +1,5 @@
 .section
+    font-family: roboto
     .form_header
         display: flex
         gap: 28px
@@ -9,11 +10,19 @@
             height: 72px
         h1
             font-size: 32px
-        button
+            color: #5A5A5F
+        .edit
             height: 36px
             padding: 7px 12px
             justify-content: center
             align-items: center
+
+            border: 2px solid
+            border-color: #002F24
+            color: #002F24
+            border-radius: 10px
+            cursor: pointer
+            font-weight: bold
     .form
         display: flex
         flex-direction: column
@@ -22,5 +31,24 @@
             flex-direction: column
             margin-bottom: 32px
             input
+                margin-top: 8px 
                 height: 25px
                 width: 380px
+                padding: 14px 112px 15px 16px
+                font-size: 18px
+        .save
+            align-content: center
+            justify-content: center
+            text-align: center
+            height: 36px
+            width: 200px
+            padding: 7px 12px
+            justify-content: center
+            align-items: center
+
+            border: 2px solid
+            border-color: #002F24
+            color: #002F24
+            border-radius: 10px
+            cursor: pointer
+            font-weight: bold
