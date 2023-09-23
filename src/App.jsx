@@ -25,8 +25,8 @@ function App() {
     <div className='App'>
       <BrowserRouter>
         <Header />
+        <Aside />
         <div className='container'>
-          <Aside />
           <Routes>
             <Route path='/' element={<Dashboard />} />
             <Route path='/log' element={<Log />} />
