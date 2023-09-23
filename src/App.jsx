@@ -31,6 +31,7 @@ function App() {
             <Route path='/' element={<Dashboard />} />
             <Route path='/log' element={<Log />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/notifications' element={<Notifications />} />
             <Route path='/settings' element={<Settings />} />
