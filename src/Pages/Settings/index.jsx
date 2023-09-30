@@ -4,23 +4,6 @@ import styles from './Settings.module.sass'
 import { useState } from 'react';
 
 export default function Settings() {
-
-  const [isOn, setIsOn] = useState(
-    { a: false, b: false, c: false }
-  );
-
-  const handleInputA = () => {
-    setIsOn({ ...isOn, a: !isOn.a });
-  }
-
-  const handleInputB = (inputLabel) => {
-    setIsOn({ ...isOn, b: !isOn.b });
-  }
-
-  const handleInputC = (inputLabel) => {
-    setIsOn({ ...isOn, c: !isOn.c });
-  }
-
   return (
     <div className={styles.section}>
       <h1>Configurações</h1>
