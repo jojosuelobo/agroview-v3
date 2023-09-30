@@ -24,97 +24,117 @@
     ],
     "notificacoes": [
       {
-        "titulo": "Temperatura do terreno “TERRENO #01” está 3 ºC acima do esperado",
+        "id": 1,
+        "titulo": "Temperatura do terreno 'TERRENO #01' está 3 ºC acima do esperado",
         "data": "15/05/2023",
         "descricao": "Descrição detalhada do erro. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus non mollis lacus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus non mollis lacus."
       },
       {
+        "id": 2,
         "titulo": "Falta de chuvas na última semana",
         "data": "20/05/2023",
         "descricao": "A falta de chuvas na última semana pode afetar o desenvolvimento das plantas. Monitorar a irrigação de perto."
       },
       {
+        "id": 3,
         "titulo": "Nível de umidade do solo muito baixo",
         "data": "22/05/2023",
         "descricao": "O nível de umidade do solo está abaixo do ideal. Ajustar o sistema de irrigação para evitar problemas de seca nas plantas."
       },
       {
+        "id": 4,
         "titulo": "Praga detectada: Pulgões nas plantações",
         "data": "25/05/2023",
         "descricao": "Pulgões foram detectados nas plantações. Tomar medidas imediatas para controlar a infestação."
       },
       {
+        "id": 5,
         "titulo": "Plantio adiantado para a próxima safra",
         "data": "01/06/2023",
         "descricao": "Decidiu-se adiantar o plantio para a próxima safra devido às condições climáticas favoráveis. Preparar o terreno e as sementes."
       },
       {
+        "id": 6,
         "titulo": "Colheita prevista para a próxima semana",
         "data": "10/06/2023",
         "descricao": "A colheita está prevista para a próxima semana. Verificar a disponibilidade de mão de obra e equipamentos."
       },
       {
+        "id": 7,
         "titulo": "Região 02: Chuva excessiva causando alagamentos",
         "data": "18/06/2023",
         "descricao": "Na região 02, as chuvas excessivas estão causando alagamentos. Avaliar os danos às plantações e tomar medidas de drenagem."
       },
       {
+        "id": 8,
         "titulo": "Safra anterior: Aumento de produtividade devido a novo fertilizante",
         "data": "02/07/2023",
         "descricao": "Na safra anterior, observou-se um aumento significativo na produtividade devido ao uso de um novo fertilizante. Considerar a continuidade do uso."
       },
       {
+        "id": 9,
         "titulo": "Manutenção programada do sistema de irrigação",
         "data": "12/07/2023",
         "descricao": "Programar uma manutenção preventiva do sistema de irrigação para garantir seu funcionamento eficiente durante toda a temporada de cultivo."
       },
       {
+        "id": 10,
         "titulo": "Contagem de pragas: Resultados positivos após tratamento",
         "data": "25/07/2023",
         "descricao": "Após o tratamento contra pragas, os resultados da contagem mostram uma redução significativa na população de pragas. Continuar monitorando."
       }
     ],
     "log": [
-        {
-          "titulo": "“TERRENO #01”: Título do terreno alterado de “TERRENO PRIMEIRO” para “TERRENO #01”",
-          "data": "15/05/2023"
-        },
-        {
-          "titulo": "Plano alterado de Básico para Corporativo",
-          "data": "15/04/2023"
-        },
-        {
-          "titulo": "Novo terreno “Plantação Venda Nova” cadastrado",
-          "data": "15/05/2022"
-        },
-        {
-          "titulo": "Atualização do sistema para versão 2.0",
-          "data": "10/03/2023"
-        },
-        {
-          "titulo": "Manutenção programada para sistemas de irrigação",
-          "data": "20/06/2023"
-        },
-        {
-          "titulo": "Novo lote de sementes encomendado",
-          "data": "05/07/2023"
-        },
-        {
-          "titulo": "Aumento na produção de milho na última colheita",
-          "data": "02/08/2023"
-        },
-        {
-          "titulo": "Reparo no trator da fazenda concluído",
-          "data": "15/08/2023"
-        },
-        {
-          "titulo": "Atualização de políticas de segurança da fazenda",
-          "data": "30/09/2023"
-        },
-        {
-          "titulo": "Aviso de alerta de tempestade para a região",
-          "data": "05/10/2023"
-        }
+      {
+        "id": 1,
+        "titulo": "“TERRENO #01”: Título do terreno alterado de “TERRENO PRIMEIRO” para “TERRENO #01”",
+        "data": "15/05/2023"
+      },
+      {
+        "id": 2,
+        "titulo": "Plano alterado de Básico para Corporativo",
+        "data": "15/04/2023"
+      },
+      {
+        "id": 3,
+        "titulo": "Novo terreno “Plantação Venda Nova” cadastrado",
+        "data": "15/05/2022"
+      },
+      {
+        "id": 4,
+        "titulo": "Atualização do sistema para versão 2.0",
+        "data": "10/03/2023"
+      },
+      {
+        "id": 5,
+        "titulo": "Manutenção programada para sistemas de irrigação",
+        "data": "20/06/2023"
+      },
+      {
+        "id": 6,
+        "titulo": "Novo lote de sementes encomendado",
+        "data": "05/07/2023"
+      },
+      {
+        "id": 7,
+        "titulo": "Aumento na produção de milho na última colheita",
+        "data": "02/08/2023"
+      },
+      {
+        "id": 8,
+        "titulo": "Reparo no trator da fazenda concluído",
+        "data": "15/08/2023"
+      },
+      {
+        "id": 9,
+        "titulo": "Atualização de políticas de segurança da fazenda",
+        "data": "30/09/2023"
+      },
+      {
+        "id": 10,
+        "titulo": "Aviso de alerta de tempestade para a região",
+        "data": "05/10/2023"
+      }
       ]
   }
   
