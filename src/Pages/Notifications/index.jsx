@@ -1,12 +1,38 @@
 /* eslint-disable no-unused-vars */
 import styles from './Notifications.module.sass'
+// URL: http://localhost:3000/notificacoes
+
+// Axios 
+import { getNotifications } from '../../axios/config.js'
+import axios from "axios";
+
+// Hooks
+import { useState, useEffect } from 'react'
 
 // Icons
 import { AiOutlineWarning } from 'react-icons/ai'
 
 export default function Notifications() {
+  const url = 'http://localhost:3000/notificacoes'
+  const [notifications, setNotifications] = useState([])
+
+  const handleClick = () => {
+    console.log(notifications)
+  }
+
+  useEffect(() => {
+    const url = 'http://localhost:3000/notificacoes'
+    axios.get(url)
+      .then(response => {
+        setNotifications((response.data))
+      })
+      .catch(error => console.log(error)) 
+  }, [])
+
+
   return (
     <div className={styles.section}>
+      <button onClick={handleClick}>oi</button>
       <h1>Log de registro</h1>
       <div className={styles.error_list}>
         <ul className={styles.list}>
