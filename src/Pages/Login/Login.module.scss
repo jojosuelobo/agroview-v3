@@ -2,8 +2,8 @@
   width: 100%;
   position: relative;
   overflow: hidden;
-  padding: 0.75rem;
-  display: grid;
+  //padding: 0.75rem;
+  display: flex;
   grid-template-columns: 1.1fr 2fr;
 }
 
@@ -18,7 +18,7 @@
 }
 
 .cover {
-  height: 87vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   background-color: var(--bg-g);
@@ -112,7 +112,7 @@
   margin-top: 0.25rem;
   font-size: 0.87rem;
   span {
-    color: var(--text-b);
+    color: var(--text-g);
     margin-left: 0.25rem;
     font-weight: bold;
     cursor: pointer;

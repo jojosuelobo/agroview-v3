@@ -3,6 +3,7 @@ import styles from './Login.module.scss';
 import Logo from '../../../public/logoLight.svg';
 import { FaRegEyeSlash } from 'react-icons/fa';
 import { FaRegEye } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 import { useState } from 'react';
 export default function Login() {
@@ -55,10 +56,10 @@ export default function Login() {
           <button type='submit' className={styles.submitBtn}>
             Login
           </button>
-          <a href='#' className={styles.signupLink}>
+          <Link to={'/register'} className={styles.signupLink}>
             {' '}
             Nao possui conta? <span>Criar uma conta</span>
-          </a>
+          </Link>
         </form>
       </div>
     </section>
