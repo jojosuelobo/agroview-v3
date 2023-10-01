@@ -21,22 +21,20 @@ import Header from './Components/Header';
 import Aside from './Components/Aside';
 
 function App() {
+  let auth = {'token':true}
+
   return (
     <div className='App'>
       <BrowserRouter>
-        <Header />
-        <Aside />
-        <div className='container'>
-          <Routes>
-            <Route path='/' element={<Dashboard />} />
-            <Route path='/log' element={<Log />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/profile' element={<Profile />} />
-            <Route path='/notifications' element={<Notifications />} />
-            <Route path='/settings' element={<Settings />} />
-          </Routes>
-        </div>
+      {auth.token && <Header/>}
+      {auth.token && <Aside/>}
+        <Routes>
+          <Route path='/' element={auth.token ? <Dashboard /> : <Login />} />
+          <Route path='/log' element={auth.token ? <Log /> : <Login />} />
+          <Route path='/profile' element={auth.token ? <Profile /> : <Login />} />
+          <Route path='/notifications' element={auth.token ? <Notifications /> : <Login />} />
+          <Route path='/settings' element={auth.token ? <Settings /> : <Login />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );
