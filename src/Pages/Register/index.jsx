@@ -4,6 +4,7 @@ import styles from './Register.module.scss';
 import Logo from '../../../public/logoLight.svg';
 import { FaRegEyeSlash } from 'react-icons/fa';
 import { FaRegEye } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 import { useState } from 'react';
 export default function Register() {
@@ -64,12 +65,12 @@ export default function Register() {
             </div>
           </div>
           <button type='submit' className={styles.submitBtn}>
-            Create Account
+            Criar conta
           </button>
-          <a href='#' className={styles.signupLink}>
+          <Link to={'/login'} className={styles.signupLink}>
             {' '}
             Ja possui conta?<span>Entre agora</span>
-          </a>
+          </Link>
         </form>
       </div>
     </section>
