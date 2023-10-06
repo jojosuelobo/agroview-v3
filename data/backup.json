@@ -1,0 +1,313 @@
+{
+    "terreno": [
+      {
+        "id": 1,
+        "nome": "Terreno #01",
+        "hectares": "42",
+        "cidade": "Sorriso",
+        "estado": "Mato Grosso",
+        "pais": "Brasil",
+        "imagem": "https://cataas.com/cat",
+        "latitude": "-20.329511",
+        "longitude": "-40.287098",
+        "clima": [
+          {
+            "temperaturaHoje": "28",
+            "temperaturaSuperficie": "22",
+            "temperaturaSoloAbaixo": "20",
+            "umidadeSolo": "0.1"
+          }
+        ],
+        "ndvi": [
+          {
+            "max": "0.78",
+            "mean": "0.28",
+            "median": "0.20",
+            "min": "0.06",
+            "deviation": "0.21",
+            "num": "46773"
+          }
+        ],
+        "uv": [
+          {
+            "max": "0.9",
+            "mean": "0.6",
+            "median": "0.58",
+            "min": "0.32",
+            "deviation": "0.21",
+            "num": "1238"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "nome": "Terreno #02",
+        "hectares": "55",
+        "cidade": "Cuiabá",
+        "estado": "Mato Grosso",
+        "pais": "Brasil",
+        "imagem": "https://cataas.com/cat",
+        "latitude": "-15.596450",
+        "longitude": "-56.080220",
+        "clima": [
+          {
+            "temperaturaHoje": "30",
+            "temperaturaSuperficie": "25",
+            "temperaturaSoloAbaixo": "22",
+            "umidadeSolo": "0.15"
+          }
+        ],
+        "ndvi": [
+          {
+            "max": "0.85",
+            "mean": "0.42",
+            "median": "0.35",
+            "min": "0.12",
+            "deviation": "0.18",
+            "num": "52101"
+          }
+        ],
+        "uv": [
+          {
+            "max": "0.95",
+            "mean": "0.68",
+            "median": "0.62",
+            "min": "0.40",
+            "deviation": "0.25",
+            "num": "1567"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "nome": "Terreno #03",
+        "hectares": "75",
+        "cidade": "Campo Grande",
+        "estado": "Mato Grosso do Sul",
+        "pais": "Brasil",
+        "imagem": "https://cataas.com/cat",
+        "latitude": "-20.469711",
+        "longitude": "-54.620235",
+        "clima": [
+          {
+            "temperaturaHoje": "32",
+            "temperaturaSuperficie": "27",
+            "temperaturaSoloAbaixo": "24",
+            "umidadeSolo": "0.12"
+          }
+        ],
+        "ndvi": [
+          {
+            "max": "0.88",
+            "mean": "0.46",
+            "median": "0.38",
+            "min": "0.14",
+            "deviation": "0.17",
+            "num": "63322"
+          }
+        ],
+        "uv": [
+          {
+            "max": "0.92",
+            "mean": "0.72",
+            "median": "0.68",
+            "min": "0.35",
+            "deviation": "0.23",
+            "num": "1879"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "nome": "Terreno #04",
+        "hectares": "60",
+        "cidade": "Uberlândia",
+        "estado": "Minas Gerais",
+        "pais": "Brasil",
+        "imagem": "https://cataas.com/cat",
+        "latitude": "-18.917771",
+        "longitude": "-48.281189",
+        "clima": [
+          {
+            "temperaturaHoje": "29",
+            "temperaturaSuperficie": "24",
+            "temperaturaSoloAbaixo": "21",
+            "umidadeSolo": "0.14"
+          }
+        ],
+        "ndvi": [
+          {
+            "max": "0.82",
+            "mean": "0.38",
+            "median": "0.30",
+            "min": "0.10",
+            "deviation": "0.19",
+            "num": "45789"
+          }
+        ],
+        "uv": [
+          {
+            "max": "0.94",
+            "mean": "0.65",
+            "median": "0.60",
+            "min": "0.38",
+            "deviation": "0.22",
+            "num": "1423"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "nome": "Terreno #05",
+        "hectares": "90",
+        "cidade": "Porto Alegre",
+        "estado": "Rio Grande do Sul",
+        "pais": "Brasil",
+        "imagem": "https://cataas.com/cat",
+        "latitude": "-30.034647",
+        "longitude": "-51.217658",
+        "clima": [
+          {
+            "temperaturaHoje": "25",
+            "temperaturaSuperficie": "20",
+            "temperaturaSoloAbaixo": "18",
+            "umidadeSolo": "0.10"
+          }
+        ],
+        "ndvi": [
+          {
+            "max": "0.75",
+            "mean": "0.32",
+            "median": "0.25",
+            "min": "0.08",
+            "deviation": "0.16",
+            "num": "38901"
+          }
+        ],
+        "uv": [
+          {
+            "max": "0.88",
+            "mean": "0.58",
+            "median": "0.54",
+            "min": "0.30",
+            "deviation": "0.20",
+            "num": "987"
+          }
+        ]
+      }
+    ],
+    "notificacoes": [
+      {
+        "id": 1,
+        "titulo": "Temperatura do terreno 'TERRENO #01' está 3 ºC acima do esperado",
+        "data": "15/05/2023",
+        "descricao": "Descrição detalhada do erro. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus non mollis lacus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus non mollis lacus."
+      },
+      {
+        "id": 2,
+        "titulo": "Falta de chuvas na última semana",
+        "data": "20/05/2023",
+        "descricao": "A falta de chuvas na última semana pode afetar o desenvolvimento das plantas. Monitorar a irrigação de perto."
+      },
+      {
+        "id": 3,
+        "titulo": "Nível de umidade do solo muito baixo",
+        "data": "22/05/2023",
+        "descricao": "O nível de umidade do solo está abaixo do ideal. Ajustar o sistema de irrigação para evitar problemas de seca nas plantas."
+      },
+      {
+        "id": 4,
+        "titulo": "Praga detectada: Pulgões nas plantações",
+        "data": "25/05/2023",
+        "descricao": "Pulgões foram detectados nas plantações. Tomar medidas imediatas para controlar a infestação."
+      },
+      {
+        "id": 5,
+        "titulo": "Plantio adiantado para a próxima safra",
+        "data": "01/06/2023",
+        "descricao": "Decidiu-se adiantar o plantio para a próxima safra devido às condições climáticas favoráveis. Preparar o terreno e as sementes."
+      },
+      {
+        "id": 6,
+        "titulo": "Colheita prevista para a próxima semana",
+        "data": "10/06/2023",
+        "descricao": "A colheita está prevista para a próxima semana. Verificar a disponibilidade de mão de obra e equipamentos."
+      },
+      {
+        "id": 7,
+        "titulo": "Região 02: Chuva excessiva causando alagamentos",
+        "data": "18/06/2023",
+        "descricao": "Na região 02, as chuvas excessivas estão causando alagamentos. Avaliar os danos às plantações e tomar medidas de drenagem."
+      },
+      {
+        "id": 8,
+        "titulo": "Safra anterior: Aumento de produtividade devido a novo fertilizante",
+        "data": "02/07/2023",
+        "descricao": "Na safra anterior, observou-se um aumento significativo na produtividade devido ao uso de um novo fertilizante. Considerar a continuidade do uso."
+      },
+      {
+        "id": 9,
+        "titulo": "Manutenção programada do sistema de irrigação",
+        "data": "12/07/2023",
+        "descricao": "Programar uma manutenção preventiva do sistema de irrigação para garantir seu funcionamento eficiente durante toda a temporada de cultivo."
+      },
+      {
+        "id": 10,
+        "titulo": "Contagem de pragas: Resultados positivos após tratamento",
+        "data": "25/07/2023",
+        "descricao": "Após o tratamento contra pragas, os resultados da contagem mostram uma redução significativa na população de pragas. Continuar monitorando."
+      }
+    ],
+    "log": [
+      {
+        "id": 1,
+        "titulo": "“TERRENO #01”: Título do terreno alterado de “TERRENO PRIMEIRO” para “TERRENO #01”",
+        "data": "15/05/2023"
+      },
+      {
+        "id": 2,
+        "titulo": "Plano alterado de Básico para Corporativo",
+        "data": "15/04/2023"
+      },
+      {
+        "id": 3,
+        "titulo": "Novo terreno “Plantação Venda Nova” cadastrado",
+        "data": "15/05/2022"
+      },
+      {
+        "id": 4,
+        "titulo": "Atualização do sistema para versão 2.0",
+        "data": "10/03/2023"
+      },
+      {
+        "id": 5,
+        "titulo": "Manutenção programada para sistemas de irrigação",
+        "data": "20/06/2023"
+      },
+      {
+        "id": 6,
+        "titulo": "Novo lote de sementes encomendado",
+        "data": "05/07/2023"
+      },
+      {
+        "id": 7,
+        "titulo": "Aumento na produção de milho na última colheita",
+        "data": "02/08/2023"
+      },
+      {
+        "id": 8,
+        "titulo": "Reparo no trator da fazenda concluído",
+        "data": "15/08/2023"
+      },
+      {
+        "id": 9,
+        "titulo": "Atualização de políticas de segurança da fazenda",
+        "data": "30/09/2023"
+      },
+      {
+        "id": 10,
+        "titulo": "Aviso de alerta de tempestade para a região",
+        "data": "05/10/2023"
+      }
+    ]
+  }
