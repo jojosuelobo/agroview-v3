@@ -2,13 +2,13 @@
 * {
   padding: 0;
   margin: 0;
+  font-family: 'Poopins', sans-serif
 }
 :root {
   --bg-g: #003024;
   --text-b: #668faf;
   --text-g: #5b5a60;
   --text-l: #c1f0de;
-  font-family: 'Poopins';
 }
 
 ul {

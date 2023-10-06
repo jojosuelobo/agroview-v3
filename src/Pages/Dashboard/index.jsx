@@ -6,6 +6,9 @@ import {HiOutlineArrowsExpand} from 'react-icons/hi'
 import {TiDeleteOutline} from 'react-icons/ti'
 import {AiOutlineEdit} from 'react-icons/ai'
 
+// Components
+import Button from '../../Components/Button'
+
 export default function Dashboard() {
   return (
     <div className={styles.dashboard}>
