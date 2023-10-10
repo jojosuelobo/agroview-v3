@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import styles from './Dashboard.module.sass'
 import image from '../../../public/image.png'
 
@@ -33,7 +34,7 @@ export default function Dashboard() {
       <h1>Dashboard</h1>
       <div className={styles.list}>
         {terrenos.map((terreno) =>
-          <div className={styles.terreno}>
+          <div className={styles.terreno} key={terreno.id}>
             <nav>
               <HiOutlineArrowsExpand className={styles.icon} />
               <h1>{terreno.nome}</h1>
@@ -48,32 +49,13 @@ export default function Dashboard() {
                 <p>Hectares: {terreno.hectares}ha</p>
                 <p>Temperatura: {terreno.clima.temperaturaHoje} ºC</p>
                 <p>{terreno.cidade}, {terreno.estado}</p>
-                <button>Exibir</button>
+                <button className={styles.buttonOpen}>Exibir</button>
               </div>
             </div>
           </div>
         )}
-        {/* <div className={styles.terreno}>
-          <nav>
-            <HiOutlineArrowsExpand className={styles.icon}/>
-            <h1>Terreno #01</h1>
-            <div className={styles.crud}>
-              <TiDeleteOutline className={styles.icon_delete}/>
-              <AiOutlineEdit className={styles.icon_edit}/>
-            </div>
-          </nav>
-          <div className={styles.content}>
-            <img src={image}/>
-            <div className={styles.info}>
-              <p>Hectares: 42ha</p>
-              <p>Temperatura: 28 ºC</p>
-              <p>Sorriso, Mato Grosso</p>
-              <button>Exibir</button>
-            </div>
-          </div>
-        </div> */}
       </div>
-    </div>
+    </div> 
 
   )
 }

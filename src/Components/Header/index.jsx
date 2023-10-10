@@ -13,7 +13,7 @@ export default function Header() {
         <Link to={'/'}><img className={styles.image} src={logo} alt="logo" /></Link>
       </div>
       <div className={styles.search}>
-        <input type="text" placeholder='Procurar' />
+        <input type="text" placeholder='Procurar' className={styles.SearchInput}/>
       </div>
       <div className={styles.logout}>
         <Link to={'/register'}>Sair</Link>

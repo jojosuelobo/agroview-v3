@@ -1,15 +1,25 @@
 .dashboard
     margin-left: 250px
     .list
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap
         .terreno
             border: 2px solid #000000
             margin: 30px
             padding: 10px
+            width: calc(45% - 3rem)
+            border-radius: 30px
             .icon
                 height: 24px
                 width: 24px
                 margin-left: 14px
                 cursor: pointer
+                transition: 0.3s
+            .icon:hover
+                transition: 0.3s
+                height: 28px
+                width: 28px
             nav
                 display: flex
                 justify-content: space-between
@@ -20,6 +30,12 @@
                         width: 24px
                         cursor: pointer
                         margin-right: 14px
+                        transition: 0.3s
+                    .icon_delete:hover, .icon_edit:hover
+                        transition: 0.3s
+                        height: 28px
+                        width: 28px
+                    
             .content
                 margin: 20px
                 display: flex
@@ -28,13 +44,20 @@
                     font-size: 18px
                     p
                         margin: 20px
-                    .buttonCustom
-                    button
+                    .buttonOpen
                         margin: 20px
                         width: 160px
                         height: 45px
-                        border: 2px solid #002F24 
+                        border: 2px solid #002F24
                         border-radius: 20px
                         font-size: 24px
                         color: #002F24
                         background-color: white
+                        cursor: pointer
+                        transition: 0.3s
+
+                    .buttonOpen:hover
+                        transition: 0.3s
+                        background-color: #002F24
+                        color: #C1F1E0
+                        border-color: #C1F1E0
