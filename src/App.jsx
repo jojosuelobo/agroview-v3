@@ -36,7 +36,6 @@ function App() {
           <Route path='/notifications' element={auth.token ? <Notifications /> : <Login />} />
           <Route path='/settings' element={auth.token ? <Settings /> : <Login />} />
           <Route path='/terreno/:id' element={auth.token ? <Terreno /> : <Login />} />
-
         </Routes>
       </BrowserRouter>
     </div>

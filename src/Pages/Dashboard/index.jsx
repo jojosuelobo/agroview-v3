@@ -53,7 +53,7 @@ export default function Dashboard() {
                 <img className={styles.imagem} src={terreno.imagem} />
                 <div className={styles.info}>
                   <p>Hectares: {terreno.hectares}ha</p>
-                  <p>Temperatura: {terreno.clima.temperaturaHoje} ºC</p>
+                  <p>Temperatura: {terreno.clima[0].temperaturaHoje} ºC</p>
                   <p>{terreno.cidade}, {terreno.estado}</p>
                   <button className={styles.buttonOpen} onClick={() => navigate(`/terreno/${terreno.id}`)}>Exibir</button>
                 </div>

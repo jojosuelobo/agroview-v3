@@ -1,0 +1,65 @@
+.content
+    .header
+        display: flex
+        flex-direction: column
+        .textHeader
+            display: flex
+            flex-direction: column
+            h1
+                font-size: 44px
+            .icon
+                cursor: pointer
+                transition: 0.3s
+            .icon:hover
+                transition: 0.3s
+                font-size: 50px
+        ul
+            color: #002F24
+            display: flex
+            margin-bottom: 4px
+            li
+                display: flex
+                align-items: center
+                justify-content: center
+                width: 200px
+                height: 85px
+                cursor: pointer
+                transition: 0.3s
+                font-weight: bold
+            li:hover
+                transition: 0.3s
+                border-radius: 300px
+                background: #002F24
+                color: #C1F1E0
+                font-weight: bold
+    .mainContent
+        color: #002F24
+        display: flex
+        .imagem
+            width: 680px
+            height: 100%
+            border-radius: 30px
+        .info
+            margin-left: 30px
+            .clima
+                //border: 2px solid red
+                padding: 0.2rem 2rem 2rem 2rem
+                font-size: 20px
+                width: 50vh
+
+                border-radius: 30px
+                box-shadow: 1px 5px 4px 0px rgba(0, 0, 0, 0.25)
+                .climaHoje
+                    display: flex
+                    //justify-content: center
+                    //align-items: center
+                    //text-align: center
+                    .climaText
+                        margin-right: 12px
+                        p
+                            text-align: left
+                        .temperatura
+                            font-size: 64px
+                    .icon
+                        font-size: 128px
+                        color: orange

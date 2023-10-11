@@ -15,6 +15,12 @@ import { useState, useEffect } from 'react'
 // Router
 import { Link, useNavigate } from 'react-router-dom'
 
+// Components
+import Geral from '../../Components/TerrenoOptions/Geral'
+import Clima from '../../Components/TerrenoOptions/Clima'
+import NDVI from '../../Components/TerrenoOptions/NDVI'
+import UV from '../../Components/TerrenoOptions/UV'
+
 export default function Terreno() {
     const navigate = useNavigate()
 
@@ -31,22 +37,34 @@ export default function Terreno() {
             .catch(error => console.log(error))
     }, [])
 
+    const [aba, setAba] = useState('Gerala')
+
     return (
         <div className={styles.content}>
             <nav className={styles.header}>
                 <div className={styles.textHeader}>
-                    <h1> <TbArrowBack className={styles.icon} onClick={() => navigate('/')}/> {terreno.nome} </h1>
+                    <h1> <TbArrowBack className={styles.icon} onClick={() => navigate('/')} /> {terreno.nome} </h1>
                     <p>Criado em: 16/05/2023</p>
                 </div>
                 <ul className={styles.options}>
-                    <li className={styles.geral}>Geral</li>
-                    <li className={styles.clima}>Clima</li>
-                    <li className={styles.ndvi}>NDVI</li>
-                    <li className={styles.uv}>UV</li>
+                    <li className={styles.geral} onClick={() => setAba('Geral')}>Geral</li>
+                    <li className={styles.clima} onClick={() => setAba('Clima')}>Clima</li>
+                    <li className={styles.ndvi} onClick={() => setAba('NDVI')}>NDVI</li>
+                    <li className={styles.uv} onClick={() => setAba('UV')}>UV</li>
                 </ul>
             </nav>
             <div className={styles.mainContent}>
-                <img src={terreno.imagem} className={styles.imagem}/>
+                {
+                aba === 'Geral' ? <Geral terreno={terreno} /> :
+                aba === 'Clima' ? <Clima terreno={terreno} /> :
+                aba === 'NDVI' ? <NDVI terreno={terreno}/> :
+                <UV terreno={terreno}/>
+                }
+
+                
+
+
+                {/* <img src={terreno.imagem} className={styles.imagem}/>
                 <div className={styles.info}>
                     <div className={styles.clima}>
                         <div className={styles.climaHoje}>
@@ -64,7 +82,7 @@ export default function Terreno() {
                     <div className={styles.historico}>
                         <p>HISTORICO</p>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     )
