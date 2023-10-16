@@ -37,7 +37,7 @@ export default function Terreno() {
             .catch(error => console.log(error))
     }, [])
 
-    const [aba, setAba] = useState('Gerala')
+    const [aba, setAba] = useState('Geral')
 
     return (
         <div className={styles.content}>
