@@ -1,9 +1,28 @@
+/* eslint-disable react/prop-types */
 import styles from './Geral.module.sass'
 
 // Icons
 import { BiSolidSun } from 'react-icons/bi'
 
-export default function Geral( {terreno} ) {
+import axios from 'axios'
+
+import { useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+
+export default function Geral() {
+    const {id} = useParams()
+
+    const url = `http://localhost:3000/terreno/${id}`
+    const [terreno, setTerrenos] = useState([])
+
+    useEffect(() => {
+        axios.get(url)
+            .then(response => {
+                setTerrenos((response.data))
+            })
+            .catch(error => console.log(error))
+    }, [])
+
     return (
         <div className={styles.mainContent}>
             <img src={terreno.imagem} className={styles.imagem} />
@@ -12,14 +31,19 @@ export default function Geral( {terreno} ) {
                     <div className={styles.climaHoje}>
                         <div className={styles.climaText}>
                             <p>Hoje</p>
-                            <p className={styles.temperatura}>{terreno.hectares} ºC</p>
+                            <p className={styles.temperatura}> {terreno?.clima?.temperaturaHoje} ºC</p>
                         </div>
                         <BiSolidSun className={styles.icon} />
                     </div>
                     <p>{terreno.cidade}, {terreno.estado}</p>
                 </div>
                 <div className={styles.solo}>
-                    <p>SOLO</p>
+                    <h1>Informações do Solo</h1>
+                    <ul className={styles.info}>
+                        <li>
+
+                        </li>
+                    </ul>
                 </div>
                 <div className={styles.historico}>
                     <p>HISTORICO</p>
