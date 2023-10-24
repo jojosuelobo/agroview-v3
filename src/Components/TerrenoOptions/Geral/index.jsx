@@ -3,6 +3,7 @@ import styles from './Geral.module.sass'
 
 // Icons
 import { BiSolidSun } from 'react-icons/bi'
+import { AiFillCalendar } from 'react-icons/ai'
 
 import axios from 'axios'
 
@@ -41,12 +42,22 @@ export default function Geral() {
                     <h1>Informações do Solo</h1>
                     <ul className={styles.info}>
                         <li>
-
+                            <p>Temperatura na superfície</p>
+                            <h2>{terreno?.clima?.temperaturaSuperficie} ºC</h2>
+                        </li>
+                        <li>
+                            <p>Temperatura na 10cm abaixo</p>
+                            <h2>{terreno?.clima?.temperaturaSoloAbaixo} ºC</h2>
+                        </li>
+                        <li>
+                            <p>Umidade do solo</p>
+                            <h2>{terreno?.clima?.umidadeSolo} ºC</h2>
                         </li>
                     </ul>
                 </div>
                 <div className={styles.historico}>
-                    <p>HISTORICO</p>
+                    <h1>Calendário</h1>
+                    <AiFillCalendar className={styles.icon}/>
                 </div>
             </div>
         </div>
