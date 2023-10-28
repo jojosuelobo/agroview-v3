@@ -26,8 +26,9 @@ export default function Clima() {
     <div className={styles.mainContent}>
 
       <div className={styles.info}>
-      <img src={terreno.imagem} className={styles.imagem} />
+
         <div className={styles.clima}>
+        <img src={terreno.imagem} className={styles.imagem} />
           <div className={styles.climaHoje}>
             <div className={styles.climaText}>
               <p>Hoje</p>
@@ -37,6 +38,8 @@ export default function Clima() {
           </div>
           <p>{terreno.cidade}, {terreno.estado}</p>
         </div>
+
+        <div>Gráficos vao ficar aqui</div>
 
       </div>
     </div>
