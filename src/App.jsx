@@ -12,6 +12,7 @@ import Log from './Pages/Log';
 import Profile from './Pages/Profile';
 import Notifications from './Pages/Notifications';
 import Settings from './Pages/Settings';
+import Terreno from './Pages/Terreno';
 
 import Login from './Pages/Login';
 import Register from './Pages/Register';
@@ -34,6 +35,7 @@ function App() {
           <Route path='/profile' element={auth.token ? <Profile /> : <Login />} />
           <Route path='/notifications' element={auth.token ? <Notifications /> : <Login />} />
           <Route path='/settings' element={auth.token ? <Settings /> : <Login />} />
+          <Route path='/terreno/:id' element={auth.token ? <Terreno /> : <Login />} />
         </Routes>
       </BrowserRouter>
     </div>
