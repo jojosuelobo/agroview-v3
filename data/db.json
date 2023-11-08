@@ -1,69 +1,102 @@
 {
   "terreno": [
     {
-      "id": 4,
-      "nome": "Terreno #04",
-      "hectares": "60",
-      "cidade": "Uberlândia",
-      "estado": "Minas Gerais",
+      "id": 1,
+      "nome": "Terreno #1",
+      "hectares": 42,
+      "cidade": "Sorriso",
+      "estado": "Mato Grosso",
       "pais": "Brasil",
       "imagem": "https://cataas.com/cat",
-      "latitude": "-18.917771",
-      "longitude": "-48.281189",
+      "latitude": "-20.329511",
+      "longitude": "-40.287098",
       "clima": {
-        "temperaturaHoje": "29",
-        "temperaturaSuperficie": "24",
-        "temperaturaSoloAbaixo": "21",
-        "umidadeSolo": "0.14"
+        "temperaturaHoje": 28,
+        "temperaturaSuperficie": 22,
+        "temperaturaSoloAbaixo": 20,
+        "umidadeSolo": 0.1
       },
       "ndvi": {
-        "max": "0.82",
-        "mean": "0.38",
-        "median": "0.30",
-        "min": "0.10",
-        "deviation": "0.19",
-        "num": "45789"
+        "max": 0.78,
+        "mean": 0.28,
+        "median": 0.2,
+        "min": 0.06,
+        "deviation": 0.21,
+        "num": 46773
       },
       "uv": {
-        "max": "0.94",
-        "mean": "0.65",
-        "median": "0.60",
-        "min": "0.38",
-        "deviation": "0.22",
-        "num": "1423"
+        "max": 0.9,
+        "mean": 0.6,
+        "median": 0.58,
+        "min": 0.32,
+        "deviation": 0.21,
+        "num": 1238
       }
     },
     {
-      "id": 5,
-      "nome": "Terreno #05",
-      "hectares": "90",
-      "cidade": "Porto Alegre",
-      "estado": "Rio Grande do Sul",
+      "id": 2,
+      "nome": "Terreno #2",
+      "hectares": 42,
+      "cidade": "Sorriso",
+      "estado": "Mato Grosso",
       "pais": "Brasil",
       "imagem": "https://cataas.com/cat",
-      "latitude": "-30.034647",
-      "longitude": "-51.217658",
+      "latitude": "-20.329511",
+      "longitude": "-40.287098",
       "clima": {
-        "temperaturaHoje": "25",
-        "temperaturaSuperficie": "20",
-        "temperaturaSoloAbaixo": "18",
-        "umidadeSolo": "0.10"
+        "temperaturaHoje": 28,
+        "temperaturaSuperficie": 22,
+        "temperaturaSoloAbaixo": 20,
+        "umidadeSolo": 0.1
       },
       "ndvi": {
-        "max": "0.75",
-        "mean": "0.32",
-        "median": "0.25",
-        "min": "0.08",
-        "deviation": "0.16",
-        "num": "38901"
+        "max": 0.78,
+        "mean": 0.28,
+        "median": 0.2,
+        "min": 0.06,
+        "deviation": 0.21,
+        "num": 46773
       },
       "uv": {
-        "max": "0.88",
-        "mean": "0.58",
-        "median": "0.54",
-        "min": "0.30",
-        "deviation": "0.20",
-        "num": "987"
+        "max": 0.9,
+        "mean": 0.6,
+        "median": 0.58,
+        "min": 0.32,
+        "deviation": 0.21,
+        "num": 1238
+      }
+    },
+    {
+      "id": 3,
+      "nome": "Terreno #3",
+      "hectares": 42,
+      "cidade": "Sorriso",
+      "estado": "Mato Grosso",
+      "pais": "Brasil",
+      "imagem": "https://cataas.com/cat",
+      "latitude": "-20.329511",
+      "longitude": "-40.287098",
+      "clima": {
+        "temperaturaHoje": 28,
+        "temperaturaSuperficie": 22,
+        "temperaturaSoloAbaixo": 20,
+        "umidadeSolo": 0.1
+      },
+      "ndvi": {
+        "max": 0.78,
+        "mean": 0.28,
+        "median": 0.2,
+        "min": 0.06,
+        "deviation": 0.21,
+        "num": 46773
+      },
+      "uv": {
+        "max": 0.9,
+        "mean": 0.6,
+        "median": 0.58,
+        "min": 0.32,
+        "deviation": 0.21,
+        "num": 1238
       }
     }
   ],
