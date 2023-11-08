@@ -31,7 +31,7 @@ export default function Dashboard() {
         setTerrenos((response.data))
       })
       .catch(error => console.log(error))
-  }, [])
+  }, [terrenos])
 
   const navigate = useNavigate()
 

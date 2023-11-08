@@ -2,11 +2,26 @@ import styles from './DeletarTerreno.module.sass'
 import { AlertDialog, Button, Flex } from '@radix-ui/themes';
 import { TiDeleteOutline } from 'react-icons/ti'
 
-export default function Deletar({terreno}) {
+import axios from 'axios';
+
+export default function Deletar({ terreno }) {
+
+    const url = 'http://localhost:3000/terreno/'
+
+    const handleDelete = () => {
+        axios.delete(`${url}${terreno.id}`)
+            .then(response => {
+                console.log(`Deleted post with ID`);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+
     return (
         <AlertDialog.Root>
             <AlertDialog.Trigger>
-                <TiDeleteOutline className={styles.icon}/>
+                <TiDeleteOutline className={styles.icon} />
             </AlertDialog.Trigger>
             <AlertDialog.Content className={styles.content} style={{ maxWidth: 450 }}>
                 <AlertDialog.Title>Deletar terreno</AlertDialog.Title>
@@ -21,7 +36,7 @@ export default function Deletar({terreno}) {
                         </Button>
                     </AlertDialog.Cancel>
                     <AlertDialog.Action>
-                        <Button variant="solid" color="red" className={styles.excluir}>
+                        <Button variant="solid" color="red" className={styles.excluir} onClick={() => handleDelete()}>
                             Excluir
                         </Button>
                     </AlertDialog.Action>
