@@ -16,7 +16,7 @@ export default function Header() {
         <input type="text" placeholder='Procurar' className={styles.SearchInput}/>
       </div>
       <div className={styles.logout}>
-        <Link to={'/register'}>Sair</Link>
+        <Link className={styles.logText} to={'/register'}>Sair</Link>
       </div>
     </nav>
   )

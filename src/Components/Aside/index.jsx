@@ -9,6 +9,9 @@ import { PiNoteBold } from 'react-icons/pi'
 import { GrAddCircle, GrNotification } from 'react-icons/gr'
 import { AiOutlineUser, AiOutlineSetting } from 'react-icons/ai'
 
+// Components
+import CadastrarTerreno from '../CadastrarTerreno'
+
 export default function Aside() {
     return (
         <aside className={styles.aside}>
@@ -22,7 +25,7 @@ export default function Aside() {
                     </Link>
                 </ul>
                 <div className={styles.other_options}>
-                    <a><GrAddCircle className={styles.icon} />Cadastro terreno</a>
+                    <a><GrAddCircle className={styles.icon} /> <CadastrarTerreno/> </a>
                 </div>
             </div>
             <div className={styles.down}>

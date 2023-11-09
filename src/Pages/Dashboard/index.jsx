@@ -17,6 +17,8 @@ import { AiOutlineEdit } from 'react-icons/ai'
 // Router
 import { Link, useNavigate } from 'react-router-dom'
 
+// Components
+import Deletar from '../../Components/DeletarTerreno';
 
 export default function Dashboard() {
 
@@ -29,7 +31,7 @@ export default function Dashboard() {
         setTerrenos((response.data))
       })
       .catch(error => console.log(error))
-  }, [])
+  }, [terrenos])
 
   const navigate = useNavigate()
 
@@ -45,7 +47,8 @@ export default function Dashboard() {
                 <HiOutlineArrowsExpand className={styles.icon} />
                 <h1>{terreno.nome}</h1>
                 <div className={styles.crud}>
-                  <TiDeleteOutline className={styles.icon_delete} />
+                  {/*<TiDeleteOutline className={styles.icon_delete} />*/}
+                  <Deletar terreno={terreno}/>
                   <AiOutlineEdit className={styles.icon_edit} />
                 </div>
               </nav>
