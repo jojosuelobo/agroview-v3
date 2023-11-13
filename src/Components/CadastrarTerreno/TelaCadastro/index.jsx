@@ -22,15 +22,15 @@ export default function Cadastro() {
     // Temporário para pegar o ultimo ID de terrenos
     const url = 'http://localhost:3000/terreno'
     const [terrenos, setTerrenos] = useState([])
-    useEffect(() => {
-        axios.get(url)
-            .then(response => {
-                setTerrenos((response.data))
-            })
-            .catch(error => console.log(error))
-    }, [terrenos])
-    const id = terrenos.length + 1
-    const nome = `Terreno #${terrenos.length + 1}`
+    // useEffect(() => {
+    //     axios.get(url)
+    //         .then(response => {
+    //             setTerrenos((response.data))
+    //         })
+    //         .catch(error => console.log(error))
+    // }, [terrenos])
+    // const id = terrenos.length + 1
+    // const nome = `Terreno #${terrenos.length + 1}`
 
     const handleSave = () => {
         axios.post('http://localhost:3000/terreno', {
@@ -74,25 +74,56 @@ export default function Cadastro() {
             });
     }
 
-    mapboxgl.accessToken = 'pk.eyJ1Ijoiamdsb2JvIiwiYSI6ImNsb3gwMHA0MDEzNnMyaW8xcDY5cjQyZDUifQ.eA1zxvIi2SxQW6obP29Apg';
-    setTimeout(() => {
+    useEffect(() => {
+        mapboxgl.accessToken = 'pk.eyJ1Ijoiamdsb2JvIiwiYSI6ImNsb3gwMHA0MDEzNnMyaW8xcDY5cjQyZDUifQ.eA1zxvIi2SxQW6obP29Apg';
         const map = new mapboxgl.Map({
             container: 'map', // container ID
-            style: 'mapbox://styles/mapbox/streets-v12', // style URL
+            style: 'mapbox://styles/mapbox/satellite-v9', // style URL
             center: [-74.5, 40], // starting position [lng, lat]
-            zoom: 9, // starting zoom
+            zoom: 12, // starting zoom
         });
-    }, 100);
+
+        const draw = new MapboxDraw({
+            displayControlsDefault: false,
+            // Select which mapbox-gl-draw control buttons to add to the map.
+            controls: {
+                polygon: true,
+                trash: true
+            },
+            // Set mapbox-gl-draw to draw by default.
+            // The user does not have to click the polygon control button first.
+            defaultMode: 'draw_polygon'
+        });
+        map.addControl(draw);
+
+        map.on('draw.create', updateArea);
+        map.on('draw.delete', updateArea);
+        map.on('draw.update', updateArea);
+
+        function updateArea(e) {
+            const data = draw.getAll();
+            const answer = document.getElementById('calculated-area');
+            if (data.features.length > 0) {
+                const area = turf.area(data);
+                // Restrict the area to 2 decimal points.
+                const rounded_area = Math.round(area * 100) / 100;
+                answer.innerHTML = `<p><strong>${rounded_area}</strong></p><p>square meters</p>`;
+            } else {
+                answer.innerHTML = '';
+                if (e.type !== 'draw.delete')
+                    alert('Click the map to draw a polygon.');
+            }
+        }
+
+    });
+
 
 
     return (
         <div className={styles.main}>
             <h1>Novo Terreno</h1>
             <div className={styles.content}>
-                <div className={styles.image}>
-                    <img src={image} className={styles.map}/>
-                    {/* <div id='map' className={styles.map}></div> */}
-                </div>
+                <div id='map' className={styles.map}></div>
                 <div className={styles.form}>
                     <input type="text" placeholder='Nome' />
                     <input type="number" placeholder='Aréa (Em hectares)' />
