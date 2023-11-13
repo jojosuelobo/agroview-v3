@@ -11,9 +11,15 @@ import { useState, useEffect } from 'react'
 // Axios
 import axios from "axios"
 
+// Map draw
+import mapboxgl from 'mapbox-gl';
+import MapboxDraw from "@mapbox/mapbox-gl-draw";
+
 export default function Cadastro() {
     const navigate = useNavigate()
+    const TOKEN = 'pk.eyJ1Ijoiamdsb2JvIiwiYSI6ImNsb3gwMHA0MDEzNnMyaW8xcDY5cjQyZDUifQ.eA1zxvIi2SxQW6obP29Apg'
 
+    // Temporário para pegar o ultimo ID de terrenos
     const url = 'http://localhost:3000/terreno'
     const [terrenos, setTerrenos] = useState([])
     useEffect(() => {
@@ -23,7 +29,6 @@ export default function Cadastro() {
             })
             .catch(error => console.log(error))
     }, [terrenos])
-
     const id = terrenos.length + 1
     const nome = `Terreno #${terrenos.length + 1}`
 
@@ -61,21 +66,32 @@ export default function Cadastro() {
                 num: 1238
             }
         })
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
-    
+
+    mapboxgl.accessToken = 'pk.eyJ1Ijoiamdsb2JvIiwiYSI6ImNsb3gwMHA0MDEzNnMyaW8xcDY5cjQyZDUifQ.eA1zxvIi2SxQW6obP29Apg';
+    setTimeout(() => {
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/mapbox/streets-v12', // style URL
+            center: [-74.5, 40], // starting position [lng, lat]
+            zoom: 9, // starting zoom
+        });
+    }, 100);
+
 
     return (
         <div className={styles.main}>
             <h1>Novo Terreno</h1>
             <div className={styles.content}>
                 <div className={styles.image}>
-                    <img src={image} />
+                    <img src={image} className={styles.map}/>
+                    {/* <div id='map' className={styles.map}></div> */}
                 </div>
                 <div className={styles.form}>
                     <input type="text" placeholder='Nome' />
