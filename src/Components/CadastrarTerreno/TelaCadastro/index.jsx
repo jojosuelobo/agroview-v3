@@ -25,6 +25,8 @@ import "mapbox-gl/dist/mapbox-gl.css"
 
 export default function Cadastro() {
     const navigate = useNavigate()
+    const [nomeTerreno, setNomeTerreno] = useState('')
+    const [coordsTerreno, setCoordsTerreno] = useState([])
 
     // Temporário para pegar o ultimo ID de terrenos
     const url = 'http://localhost:3000/terreno'
@@ -78,7 +80,8 @@ export default function Cadastro() {
             const answer = document.getElementById('calculated-area');
             if (data.features.length > 0) {
                 const coords = JSON.stringify(data.features[0].geometry.coordinates[0])
-                console.log(coords)
+                //console.log(coords)
+                setCoordsTerreno(coords)
                 //console.log(`DATA AQUI: ${JSON.stringify(data.features[0].geometry.coordinates[0])}`);
             } else {
                 answer.innerHTML = '';
@@ -93,61 +96,78 @@ export default function Cadastro() {
 
     }, []);
 
-    const handleSave = () => {
-        axios.post('http://localhost:3000/terreno', {
-            id: id,
-            nome: nome,
-            hectares: 42,
-            cidade: 'Sorriso',
-            estado: 'Mato Grosso',
-            pais: 'Brasil',
-            imagem: 'https://cataas.com/cat',
-            latitude: '-20.329511',
-            longitude: '-40.287098',
-            clima: {
-                temperaturaHoje: 28,
-                temperaturaSuperficie: 22,
-                temperaturaSoloAbaixo: 20,
-                umidadeSolo: 0.1
+    const terrenoCadastrado = {
+        "name": nomeTerreno,
+        "geo_json": {
+            "type": "Feature",
+            "properties": {
+
             },
-            ndvi: {
-                max: 0.78,
-                mean: 0.28,
-                median: 0.20,
-                min: 0.06,
-                deviation: 0.21,
-                num: 46773
-            },
-            uv: {
-                max: 0.9,
-                mean: 0.6,
-                median: 0.58,
-                min: 0.32,
-                deviation: 0.21,
-                num: 1238
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": coordsTerreno
             }
-        })
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        }
+    }
+
+    //console.log(terrenoCadastrado)
+
+    const handleSave = () => {
+        console.log(terrenoCadastrado)
+        // axios.post('http://localhost:3000/terreno', {
+        //     id: id,
+        //     nome: nome,
+        //     hectares: 42,
+        //     cidade: 'Sorriso',
+        //     estado: 'Mato Grosso',
+        //     pais: 'Brasil',
+        //     imagem: 'https://cataas.com/cat',
+        //     latitude: '-20.329511',
+        //     longitude: '-40.287098',
+        //     clima: {
+        //         temperaturaHoje: 28,
+        //         temperaturaSuperficie: 22,
+        //         temperaturaSoloAbaixo: 20,
+        //         umidadeSolo: 0.1
+        //     },
+        //     ndvi: {
+        //         max: 0.78,
+        //         mean: 0.28,
+        //         median: 0.20,
+        //         min: 0.06,
+        //         deviation: 0.21,
+        //         num: 46773
+        //     },
+        //     uv: {
+        //         max: 0.9,
+        //         mean: 0.6,
+        //         median: 0.58,
+        //         min: 0.32,
+        //         deviation: 0.21,
+        //         num: 1238
+        //     }
+        // })
+        //     .then(function (response) {
+        //         console.log(response);
+        //     })
+        //     .catch(function (error) {
+        //         console.log(error);
+        //     });
     }
 
     return (
-        <div className={styles.main}>
+        <div className={styles.main} >
             <h1>Novo Terreno</h1>
             <div className={styles.content}>
                 {/* <Mapa /> */}
                 <div id='map' className='Mapa' />
                 <div className={styles.form}>
-                    <input type="text" placeholder='Nome' />
+                    <input type="text" placeholder='Nome' onChange={(e) => setNomeTerreno(e.target.value)} />
                     <AlertDialog.Action>
                         <Button onClick={() => handleSave()}>Salvar</Button>
                     </AlertDialog.Action>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
