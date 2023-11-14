@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import styles from './TelaCadastro.module.sass'
 import image from '../../../../public/image.png'
 import { AlertDialog, Button, Flex } from '@radix-ui/themes';
@@ -28,7 +29,7 @@ export default function Cadastro() {
                 setTerrenos((response.data))
             })
             .catch(error => console.log(error))
-    }, [terrenos])
+    }, [])
     const id = terrenos.length + 1
     const nome = `Terreno #${terrenos.length + 1}`
 
@@ -79,10 +80,9 @@ export default function Cadastro() {
             <h1>Novo Terreno</h1>
             <div className={styles.content}>
                <Mapa />
-                <div id='mapa'></div>
+               
                 <div className={styles.form}>
                     <input type="text" placeholder='Nome' />
-                    <input type="number" placeholder='Aréa (Em hectares)' />
                     <AlertDialog.Action>
                         <Button onClick={() => handleSave()}>Salvar</Button>
                     </AlertDialog.Action>
