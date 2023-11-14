@@ -8,6 +8,8 @@ import { useEffect } from 'react'
 import mapboxgl from 'mapbox-gl';
 import MapboxDraw from "@mapbox/mapbox-gl-draw";
 import * as turf from 'turf'
+import "mapbox-gl/dist/mapbox-gl.css"
+
 
 export default function Mapa() {
     const TOKEN = 'pk.eyJ1Ijoiamdsb2JvIiwiYSI6ImNsb3gwMHA0MDEzNnMyaW8xcDY5cjQyZDUifQ.eA1zxvIi2SxQW6obP29Apg'
@@ -50,6 +52,14 @@ export default function Mapa() {
 
     useEffect(() => {
         mapboxgl.accessToken = 'pk.eyJ1Ijoiamdsb2JvIiwiYSI6ImNsb3gwMHA0MDEzNnMyaW8xcDY5cjQyZDUifQ.eA1zxvIi2SxQW6obP29Apg';
+
+        const existingMap = new mapboxgl.Map({ container: 'map' });
+        if (existingMap) {
+            existingMap.remove();
+        }
+
+        
+
         const map = new mapboxgl.Map({
             container: 'map', // container ID
             style: 'mapbox://styles/mapbox/satellite-v9', // style URL
@@ -88,9 +98,14 @@ export default function Mapa() {
             }
         }
 
+        return () => {
+            map.removeControl(draw);
+        }
+
+   
     }, []);
 
     return (
-        <div id='map' className='Mapa'></div>
+        <div id='map' className='Mapa' />
     )
 }

@@ -14,8 +14,14 @@ import axios from "axios"
 
 // Componets
 import Mapa from '../../Mapa'
+
+// Mapa
+// Map draw
 import mapboxgl from 'mapbox-gl';
 import MapboxDraw from "@mapbox/mapbox-gl-draw";
+import * as turf from 'turf'
+import "mapbox-gl/dist/mapbox-gl.css"
+
 
 export default function Cadastro() {
     const navigate = useNavigate()
@@ -32,6 +38,60 @@ export default function Cadastro() {
     }, [])
     const id = terrenos.length + 1
     const nome = `Terreno #${terrenos.length + 1}`
+
+    useEffect(() => {
+        mapboxgl.accessToken = 'pk.eyJ1Ijoiamdsb2JvIiwiYSI6ImNsb3gwMHA0MDEzNnMyaW8xcDY5cjQyZDUifQ.eA1zxvIi2SxQW6obP29Apg';
+
+        const existingMap = new mapboxgl.Map({ container: 'map' });
+        if (existingMap) {
+            existingMap.remove();
+        }
+
+
+
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/mapbox/satellite-v9', // style URL
+            center: [-74.5, 40], // starting position [lng, lat]
+            zoom: 12, // starting zoom
+        });
+
+        const draw = new MapboxDraw({
+            displayControlsDefault: false,
+            // Select which mapbox-gl-draw control buttons to add to the map.
+            controls: {
+                polygon: true,
+                trash: true
+            },
+            // Set mapbox-gl-draw to draw by default.
+            // The user does not have to click the polygon control button first.
+            defaultMode: 'draw_polygon'
+        });
+        map.addControl(draw);
+
+        map.on('draw.create', updateArea);
+        map.on('draw.delete', updateArea);
+        map.on('draw.update', updateArea);
+
+        function updateArea(e) {
+            const data = draw.getAll();
+            const answer = document.getElementById('calculated-area');
+            if (data.features.length > 0) {
+                const coords = JSON.stringify(data.features[0].geometry.coordinates[0])
+                console.log(coords)
+                //console.log(`DATA AQUI: ${JSON.stringify(data.features[0].geometry.coordinates[0])}`);
+            } else {
+                answer.innerHTML = '';
+                if (e.type !== 'draw.delete')
+                    alert('Click the map to draw a polygon.');
+            }
+        }
+
+        return () => {
+            map.removeControl(draw);
+        }
+
+    }, []);
 
     const handleSave = () => {
         axios.post('http://localhost:3000/terreno', {
@@ -79,8 +139,8 @@ export default function Cadastro() {
         <div className={styles.main}>
             <h1>Novo Terreno</h1>
             <div className={styles.content}>
-               <Mapa />
-               
+                {/* <Mapa /> */}
+                <div id='map' className='Mapa' />
                 <div className={styles.form}>
                     <input type="text" placeholder='Nome' />
                     <AlertDialog.Action>
