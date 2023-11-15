@@ -39,7 +39,7 @@ export default function Dashboard() {
     <div className={styles.dashboard}>
       <div className={styles.list}>
         {terrenos.length === 0 ? (
-          <img src={vazio}/>
+          <img src={vazio} />
         ) : (
           terrenos.map((terreno) =>
             <div className={styles.terreno} key={terreno.id}>
@@ -48,12 +48,13 @@ export default function Dashboard() {
                 <h1>{terreno.nome}</h1>
                 <div className={styles.crud}>
                   {/*<TiDeleteOutline className={styles.icon_delete} />*/}
-                  <Deletar terreno={terreno}/>
+                  <Deletar terreno={terreno} />
                   <AiOutlineEdit className={styles.icon_edit} />
                 </div>
               </nav>
               <div className={styles.content}>
-                <img className={styles.imagem} src={terreno.imagem} />
+                {/* <img className={styles.imagem} src={terreno.imagem} /> */}
+                <img className={styles.imagem} src={image} /> 
                 <div className={styles.info}>
                   <p>Hectares: {terreno.hectares}ha</p>
                   <p>Temperatura: {terreno.clima.temperaturaHoje} ºC</p>

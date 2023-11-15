@@ -96,24 +96,44 @@ export default function Cadastro() {
 
     }, []);
 
-    const terrenoCadastrado = {
-        "name": nomeTerreno,
-        "geo_json": {
-            "type": "Feature",
-            "properties": {
+    const [responseData, setResponseData] = useState(null);
+    const handleApiCall = async () => {
+        try {
+            const apiUrl = 'http://api.agromonitoring.com/agro/1.0/polygons?appid=22a650397fd4d05cc259b9154e2ea124';
 
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": coordsTerreno
+            const requestBody = {
+                "name": nomeTerreno,
+                "geo_json": {
+                    "type": "Feature",
+                    "properties": {
+
+                    },
+                    "geometry": {
+                        "type": "Polygon",
+                        "coordinates": [
+                            JSON.parse(coordsTerreno)
+                        ]
+                    }
+                }
             }
-        }
-    }
 
-    //console.log(terrenoCadastrado)
+            const response = await axios.post(apiUrl, requestBody, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            setResponseData(response.data);
+            console.log('API Response:', response.data);
+        } catch (error) {
+            console.error('Error calling API:', error);
+        }
+    };
+
 
     const handleSave = () => {
-        console.log(terrenoCadastrado)
+        handleApiCall()
+
         // axios.post('http://localhost:3000/terreno', {
         //     id: id,
         //     nome: nome,
