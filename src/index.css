@@ -28,3 +28,8 @@ a:visited {
   text-decoration: none;
   color: black;
 }
+.mapboxgl-canvas {
+  position: relative !important;
+  width: 100% !important;
+  height: 18rem !important;
+}
