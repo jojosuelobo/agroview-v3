@@ -99,7 +99,7 @@ export default function Cadastro() {
     const [responseData, setResponseData] = useState(null);
     const handleApiCall = async () => {
         try {
-            const apiUrl = 'http://api.agromonitoring.com/agro/1.0/polygons?appid=22a650397fd4d05cc259b9154e2ea124';
+            const apiUrl = 'http://api.agromonitoring.com/agro/1.0/polygons?appid=4b7b5649b5da1e01de5366896e27eb72';
 
             const requestBody = {
                 "name": nomeTerreno,
