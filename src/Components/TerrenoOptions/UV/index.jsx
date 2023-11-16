@@ -13,6 +13,7 @@ import { useState, useEffect } from 'react'
 
 // Apis
 import { getUV } from '../../../API/getUV'
+import { getUVweek } from '../../../API/getUVweek'
 
 // Map
 import Map, { Source, Layer } from 'react-map-gl';
@@ -28,6 +29,7 @@ export default function UV({ terreno }) {
   mapboxgl.accessToken = TOKEN_MAPBOX;
 
   const [uv, setUV] = useState([])
+  const [uvWeek, setUVweek] = useState([])
 
   const geojson = {
     type: 'FeatureCollection',
@@ -63,7 +65,18 @@ export default function UV({ terreno }) {
         throw error; // Propague o erro para interromper a execução
       }
     }
+    const fetchUVweek = async () => {
+      try {
+        const uvData = await getUVweek(terreno.id);
+        setUVweek(uvData);
+        return uvData;
+      } catch (error) {
+        console.error('Erros de fetch UV:', error);
+        throw error; // Propague o erro para interromper a execução
+      }
+    }
     fetchUV()
+      .then(fetchUVweek)
       .catch(error => console.error('Erro durante o encadeamento:', error));
   }, [])
 
@@ -74,6 +87,8 @@ export default function UV({ terreno }) {
       maximumFractionDigits: 2,
     }).format(num / 100);
   }
+
+  console.log(uvWeek)
 
   return (
     <div className={styles.mainContent}>
