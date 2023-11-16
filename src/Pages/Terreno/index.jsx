@@ -22,24 +22,16 @@ import Clima from '../../Components/TerrenoOptions/Clima'
 import NDVI from '../../Components/TerrenoOptions/NDVI'
 import UV from '../../Components/TerrenoOptions/UV'
 
+// Apis
+import { getWeather } from '../../API/getWeather'
+
 export default function Terreno() {
     const navigate = useNavigate()
+    const [aba, setAba] = useState('Geral')
 
     const { id } = useParams()
     const { state: { terreno } } = useLocation();
 
-    const url = `http://localhost:3000/terreno/${id}`
-    // const [terreno, setTerreno] = useState([])
-
-    // useEffect(() => {
-    //     axios.get(url)
-    //         .then(response => {
-    //             setTerreno((response.data))
-    //         })
-    //         .catch(error => console.log(error))
-    // }, [])
-
-    const [aba, setAba] = useState('Geral')
 
     return (
         <div className={styles.content}>
@@ -57,13 +49,13 @@ export default function Terreno() {
             </nav>
             <div className={styles.mainContent}>
                 {
-                aba === 'Geral' ? <Geral terreno={terreno} /> :
-                aba === 'Clima' ? <Clima terreno={terreno} /> :
-                aba === 'NDVI' ? <NDVI terreno={terreno}/> :
-                <UV terreno={terreno}/>
+                    aba === 'Geral' ? <Geral terreno={terreno} /> :
+                        aba === 'Clima' ? <Clima terreno={terreno} /> :
+                            aba === 'NDVI' ? <NDVI terreno={terreno} /> :
+                                <UV terreno={terreno} />
                 }
 
-                
+
 
 
                 {/* <img src={terreno.imagem} className={styles.imagem}/>

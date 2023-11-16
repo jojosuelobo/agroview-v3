@@ -6,24 +6,61 @@ import image from '../../../../public/image.png'
 import { BiSolidSun } from 'react-icons/bi'
 import { AiFillCalendar } from 'react-icons/ai'
 
+// Axios
 import axios from 'axios'
 
+// React
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
-export default function Geral() {
-    const {id} = useParams()
+// Apis
+import { getWeather } from '../../../API/getWeather'
+import { getLocalization } from '../../../API/getLocalization'
 
-    const url = `http://localhost:3000/terreno/${id}`
-    const [terreno, setTerrenos] = useState([])
+export default function Geral({ terreno }) {
+    const { id } = useParams()
+
+    const [climaTerreno, setClimaTerreno] = useState([])
+    const [endereco, setEndereco] = useState([])
+    const [cidade, setCidade] = useState('')
+    const [estado, setEstado] = useState('')
+
 
     useEffect(() => {
-        axios.get(url)
-            .then(response => {
-                setTerrenos((response.data))
-            })
-            .catch(error => console.log(error))
+        const fetchWeather = async () => {
+            try {
+                const weatherData = await getWeather(terreno.center);
+                setClimaTerreno(weatherData);
+                return weatherData;
+            } catch (error) {
+                console.error('Erros de fetch weather:', error);
+                throw error; // Propague o erro para interromper a execução
+            }
+        }
+        const fetchLocalization = async () => {
+            try {
+                const localizationData = await getLocalization(terreno.center)
+                setEndereco(localizationData)
+                setCidade(localizationData.features[0].properties.city)
+                setEstado(localizationData.features[0].properties.county)
+                return localizationData
+            } catch (error) {
+                console.error('Erros de fetch weather:', error);
+                throw error; // Propague o erro para interromper a execução
+            }
+        }
+
+        fetchWeather()
+        .then(fetchLocalization)
+        .catch(error => console.error('Erro durante o encadeamento:', error));
     }, [])
+
+    //console.log(`${terreno.center}`)
+    //console.log(climaTerreno)
+    console.log(endereco)
+
+    const celsius = parseInt((climaTerreno?.main?.temp - 273.15).toFixed(2));
+    //const cidade = endereco?.features[0].properties.city
 
     return (
         <div className={styles.mainContent}>
@@ -33,11 +70,11 @@ export default function Geral() {
                     <div className={styles.climaHoje}>
                         <div className={styles.climaText}>
                             <p>Hoje</p>
-                            <p className={styles.temperatura}> {terreno?.clima?.temperaturaHoje} ºC</p>
+                            <p className={styles.temperatura}> {celsius} ºC</p>
                         </div>
                         <BiSolidSun className={styles.icon} />
                     </div>
-                    <p>{terreno.cidade}, {terreno.estado}</p>
+                    <p>{cidade}, {estado}</p>
                 </div>
                 <div className={styles.solo}>
                     <h1>Informações do Solo</h1>
@@ -58,7 +95,7 @@ export default function Geral() {
                 </div>
                 <div className={styles.historico}>
                     <h1>Calendário</h1>
-                    <AiFillCalendar className={styles.icon}/>
+                    <AiFillCalendar className={styles.icon} />
                 </div>
             </div>
         </div>

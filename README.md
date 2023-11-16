@@ -1,8 +1,21 @@
-# React + Vite
+# AgroView
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### AgroMonitoring
 
-Currently, two official plugins are available:
+**Responde de Polygons**
+https://agromonitoring.com/api/polygons
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Response de Imagens**
+https://agromonitoring.com/api/images#begin
+
+**Response de Weather**
+https://agromonitoring.com/api/current-weather
+
+### MapBox
+
+**gl draw**
+https://docs.mapbox.com/mapbox-gl-js/example/mapbox-gl-draw/
+
+
+### Adress by lat/lon
+https://www.geoapify.com/reverse-geocoding-api

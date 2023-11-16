@@ -31,26 +31,19 @@ import "mapbox-gl/dist/mapbox-gl.css"
 //APIs
 import { getPolygons } from '../../API/getPolygons';
 import { getImages } from '../../API/getImagens';
+import { getLocalization } from '../../API/getLocalization';
 
 export default function Dashboard() {
 
   const TOKEN_MAPBOX = import.meta.env.VITE_TOKEN_MAPBOX
   mapboxgl.accessToken = TOKEN_MAPBOX;
 
-  const [terrenosFiltrados, setTerrenosFiltrados] = useState([
-    {
-      id: '',
-      nome: '',
-      center: ['', ''],
-      area: ''
-    }
-  ])
-
   const [urlImagemTerreno, setUrlImagemTerreno] = useState('')
 
   const [terrenos, setPolygons] = useState([])
   const [imagemTerrenos, setImagemTerrenos] = useState([])
   const [mapas, setMapas] = useState([])
+  const [loc, setLoc] = useState([])
 
   useEffect(() => {
     const fetchDataPolygons = async () => {
@@ -93,7 +86,6 @@ export default function Dashboard() {
               }
             ]
           }
-            ;
         });
         setMapas(novosMapas);
       };
@@ -101,6 +93,7 @@ export default function Dashboard() {
       mapasPromise();
 
     };
+
     fetchDataPolygons()
       .then(fetchDataImages)
       .catch(error => console.error('Erro durante o encadeamento:', error));
