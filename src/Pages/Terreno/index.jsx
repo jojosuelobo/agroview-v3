@@ -40,7 +40,6 @@ export default function Terreno() {
     // }, [])
 
     const [aba, setAba] = useState('Geral')
-    console.log(mapas)
 
     return (
         <div className={styles.content}>
