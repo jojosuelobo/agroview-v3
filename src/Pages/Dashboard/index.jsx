@@ -193,7 +193,7 @@ export default function Dashboard() {
                   <p>Hectares: {terreno.area} ha</p>
                   <p>Temperatura:  ºC</p>
                   <p>{terreno.cidade}, {terreno.estado}</p>
-                  <button className={styles.buttonOpen} onClick={() => navigate(`/terreno/${terreno.id}`)}>Exibir</button>
+                  <button className={styles.buttonOpen} onClick={() => navigate(`/terreno/${terreno.id}`, { state: { terreno } } )}>Exibir</button>
                 </div>
               </div>
             </div>
