@@ -1,11 +1,20 @@
 .main
+    align-content: center
+    text-align: center
+    align-items: center
+    justify-content: center
     h1
         text-align: center
         border-bottom: 3px solid #003024
     .content
         display: flex
+        flex-direction: column
         padding: 2rem
         gap: 32px
+        #map
+            height: 50vh
+            .mapboxgl-control-container
+                display: none
         .form
             display: flex
             flex-direction: column

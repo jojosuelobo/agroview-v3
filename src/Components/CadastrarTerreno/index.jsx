@@ -11,7 +11,7 @@ export default function CadastrarTerreno() {
             <AlertDialog.Trigger>
                 <Button>Cadastrar Terreno</Button>
             </AlertDialog.Trigger>
-            <AlertDialog.Content style={{ maxWidth: 750 }} className={styles.Content}>
+            <AlertDialog.Content style={{ maxWidth: 1000 }} className={styles.Content}>
                 {/* <AlertDialog.Title>Revoke access</AlertDialog.Title>
                 <AlertDialog.Description size="2">
                     Are you sure? This application will no longer be accessible and any

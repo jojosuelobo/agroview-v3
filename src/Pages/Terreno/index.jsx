@@ -14,6 +14,7 @@ import { useState, useEffect } from 'react'
 
 // Router
 import { Link, useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
 
 // Components
 import Geral from '../../Components/TerrenoOptions/Geral'
@@ -25,17 +26,18 @@ export default function Terreno() {
     const navigate = useNavigate()
 
     const { id } = useParams()
+    const { state: { terreno } } = useLocation();
 
     const url = `http://localhost:3000/terreno/${id}`
-    const [terreno, setTerreno] = useState([])
+    // const [terreno, setTerreno] = useState([])
 
-    useEffect(() => {
-        axios.get(url)
-            .then(response => {
-                setTerreno((response.data))
-            })
-            .catch(error => console.log(error))
-    }, [])
+    // useEffect(() => {
+    //     axios.get(url)
+    //         .then(response => {
+    //             setTerreno((response.data))
+    //         })
+    //         .catch(error => console.log(error))
+    // }, [])
 
     const [aba, setAba] = useState('Geral')
 

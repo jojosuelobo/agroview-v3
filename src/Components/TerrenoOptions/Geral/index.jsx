@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import styles from './Geral.module.sass'
+import image from '../../../../public/image.png'
 
 // Icons
 import { BiSolidSun } from 'react-icons/bi'
@@ -26,7 +27,7 @@ export default function Geral() {
 
     return (
         <div className={styles.mainContent}>
-            <img src={terreno.imagem} className={styles.imagem} />
+            <img src={image} className={styles.imagem} />
             <div className={styles.info}>
                 <div className={styles.clima}>
                     <div className={styles.climaHoje}>
