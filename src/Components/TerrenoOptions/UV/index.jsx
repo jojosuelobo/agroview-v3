@@ -4,24 +4,76 @@ import styles from './UV.module.sass'
 // Icons
 import { AiFillCalendar } from 'react-icons/ai'
 
+// Axios
 import axios from 'axios'
 
+// React
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
-export default function UV() {
+// Apis
+import { getUV } from '../../../API/getUV'
+
+// Map
+import Map, { Source, Layer } from 'react-map-gl';
+import { FeatureCollection } from 'geojson';
+import mapboxgl from 'mapbox-gl';
+import MapboxDraw from "@mapbox/mapbox-gl-draw";
+import "mapbox-gl/dist/mapbox-gl.css"
+
+export default function UV({ terreno }) {
   const { id } = useParams()
 
-  const url = `http://localhost:3000/terreno/${id}`
-  const [terreno, setTerrenos] = useState([])
+  const TOKEN_MAPBOX = import.meta.env.VITE_TOKEN_MAPBOX
+  mapboxgl.accessToken = TOKEN_MAPBOX;
+
+  const [uv, setUV] = useState([])
+
+  const geojson = {
+    type: 'FeatureCollection',
+    features: [
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Polygon',
+          coordinates: terreno.geo_json.geometry.coordinates
+        }
+      }
+    ]
+  };
+
+  const layerStyle = {
+    id: 'maine',
+    type: 'fill',
+    source: 'maine',
+    paint: {
+      'fill-color': '#00ff77',
+      'fill-opacity': 0.8,
+    }
+  };
 
   useEffect(() => {
-    axios.get(url)
-      .then(response => {
-        setTerrenos((response.data))
-      })
-      .catch(error => console.log(error))
+    const fetchUV = async () => {
+      try {
+        const uvData = await getUV(terreno.id);
+        setUV(uvData);
+        return uvData;
+      } catch (error) {
+        console.error('Erros de fetch UV:', error);
+        throw error; // Propague o erro para interromper a execução
+      }
+    }
+    fetchUV()
+      .catch(error => console.error('Erro durante o encadeamento:', error));
   }, [])
+
+  function formatAsPercentage(num) {
+    return new Intl.NumberFormat('default', {
+      style: 'percent',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(num / 100);
+  }
 
   return (
     <div className={styles.mainContent}>
@@ -29,10 +81,24 @@ export default function UV() {
       <div className={styles.info}>
 
         <div className={styles.uv}>
-          <img src={terreno.imagem} className={styles.imagem} />
+          <div id='DEUSFIEL'>
+            <Map id='mapaGeral'
+              mapLib={import('mapbox-gl')}
+              initialViewState={{
+                longitude: terreno.center[0],
+                latitude: terreno.center[1],
+                zoom: 15
+              }}
+              mapStyle="mapbox://styles/mapbox/satellite-v9"
+            >
+              <Source id="my-data" type="geojson" data={geojson}>
+                <Layer {...layerStyle} />
+              </Source>
+            </Map>
+          </div>
           <div className={styles.dados}>
             <div className={styles.data}>
-              INFOS AQUI
+              Nível UVI: {formatAsPercentage(uv.uvi)}
             </div>
             <div>
               Graficos circulares
