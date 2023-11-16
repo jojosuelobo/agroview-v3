@@ -49,8 +49,6 @@ export default function Cadastro() {
             existingMap.remove();
         }
 
-
-
         const map = new mapboxgl.Map({
             container: 'map', // container ID
             style: 'mapbox://styles/mapbox/satellite-v9', // style URL

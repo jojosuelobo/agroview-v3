@@ -92,16 +92,14 @@ export default function Dashboard() {
                 }
               }
             ]
-          };
+          }
+            ;
         });
-      
-        // Agora você tem um array de geojsons em novosMapas
-        // Para salvá-los todos, você pode usar setMapas passando o array completo
         setMapas(novosMapas);
       };
-      
+
       mapasPromise();
-      
+
     };
     fetchDataPolygons()
       .then(fetchDataImages)
@@ -164,8 +162,8 @@ export default function Dashboard() {
         {terrenos.length === 0 ? (
           <img src={vazio} />
         ) : (
-          terrenos.map((terreno) =>
-            <div className={styles.terreno} key={terreno.id}>
+          terrenos.map((terreno, index) =>
+            <div className={styles.terreno} key={terreno.id} id='DEUSFIEL'>
               <nav>
                 <HiOutlineArrowsExpand className={styles.icon} />
                 <h1>{terreno.name}</h1>
@@ -177,17 +175,17 @@ export default function Dashboard() {
               </nav>
               <div className={styles.content}>
 
-                <Map id='mapDash' className={styles.mapDash}
+                <Map id='mapDash' 
                   mapLib={import('mapbox-gl')}
                   initialViewState={{
                     longitude: terreno.center[0],
                     latitude: terreno.center[1],
-                    zoom: 14
+                    zoom: 15
                   }}
                   mapStyle="mapbox://styles/mapbox/satellite-v9"
                 >
-                  <Source id="my-data" type="geojson" data={mapas[0]}>
-                    <Layer {...layerStyle} />
+                  <Source id="my-data" type="geojson" data={mapas[index]}>
+                    <Layer {...layerStyle}/>
                   </Source>
                 </Map>
 

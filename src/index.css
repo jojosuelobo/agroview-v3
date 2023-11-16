@@ -6,6 +6,7 @@
   margin: 0;
   font-family: 'Poopins', sans-serif
 }
+
 :root {
   --bg-g: #003024;
   --text-b: #668faf;
@@ -24,12 +25,23 @@ li {
 a {
   text-decoration: none;
 }
+
 a:visited {
   text-decoration: none;
   color: black;
 }
+
 .mapboxgl-canvas {
+  /* position: relative !important; */
+  /* width: 100% !important; */
+}
+
+.mapboxgl-ctrl-bottom-left,
+.mapboxgl-ctrl-bottom-right {
+  display: none !important;
+}
+
+#DEUSFIEL .mapboxgl-canvas {
   position: relative !important;
   width: 100% !important;
-  height: 18rem !important;
 }
