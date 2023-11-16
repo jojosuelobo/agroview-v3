@@ -5,13 +5,6 @@ const TokenAgroMonitoring = import.meta.env.VITE_TOKEN_AGROMONITORING
 
 export const getPolygons = async () => {
     const urlApiMonitoring = `http://api.agromonitoring.com/agro/1.0/polygons?appid=${TokenAgroMonitoring}`;
-
-    // axios.get(urlApiMonitoring)
-    // .then(response => {
-    //     return (response.data)
-    // })
-    // .catch(error => console.log(error))'
-
     try {
         const response = await axios.get(urlApiMonitoring);
         return response.data;
