@@ -17,14 +17,46 @@ import { useState, useEffect } from 'react'
 import { getWeather } from '../../../API/getWeather'
 import { getLocalization } from '../../../API/getLocalization'
 
+// Map
+import Map, { Source, Layer } from 'react-map-gl';
+//import { CircleLayer } from 'react-map-gl';
+import { FeatureCollection } from 'geojson';
+import mapboxgl from 'mapbox-gl';
+import MapboxDraw from "@mapbox/mapbox-gl-draw";
+import "mapbox-gl/dist/mapbox-gl.css"
+
 export default function Geral({ terreno }) {
     const { id } = useParams()
+    const TOKEN_MAPBOX = import.meta.env.VITE_TOKEN_MAPBOX
+    mapboxgl.accessToken = TOKEN_MAPBOX;
 
     const [climaTerreno, setClimaTerreno] = useState([])
     const [endereco, setEndereco] = useState([])
     const [cidade, setCidade] = useState('')
     const [estado, setEstado] = useState('')
 
+    const geojson = {
+        type: 'FeatureCollection',
+        features: [
+            {
+                type: 'Feature',
+                geometry: {
+                    type: 'Polygon',
+                    coordinates: terreno.geo_json.geometry.coordinates
+                }
+            }
+        ]
+    };
+
+    const layerStyle = {
+        id: 'maine',
+        type: 'fill',
+        source: 'maine',
+        paint: {
+            'fill-color': '#0080ff',
+            'fill-opacity': 0.5
+        }
+    };
 
     useEffect(() => {
         const fetchWeather = async () => {
@@ -51,20 +83,34 @@ export default function Geral({ terreno }) {
         }
 
         fetchWeather()
-        .then(fetchLocalization)
-        .catch(error => console.error('Erro durante o encadeamento:', error));
+            .then(fetchLocalization)
+            .catch(error => console.error('Erro durante o encadeamento:', error));
     }, [])
 
     //console.log(`${terreno.center}`)
     //console.log(climaTerreno)
-    console.log(endereco)
+    //console.log(endereco)
 
     const celsius = parseInt((climaTerreno?.main?.temp - 273.15).toFixed(2));
-    //const cidade = endereco?.features[0].properties.city
 
     return (
-        <div className={styles.mainContent}>
-            <img src={image} className={styles.imagem} />
+        <div className={styles.mainContent} id='DEUSFIEL'>
+            {/* <img src={image} className={styles.imagem} /> */}
+            <div className={styles.imagem} >
+                <Map id='mapaGeral'
+                    mapLib={import('mapbox-gl')}
+                    initialViewState={{
+                        longitude: terreno.center[0],
+                        latitude: terreno.center[1],
+                        zoom: 16
+                    }}
+                    mapStyle="mapbox://styles/mapbox/satellite-v9"
+                >
+                    <Source id="my-data" type="geojson" data={geojson}>
+                        <Layer {...layerStyle} />
+                    </Source>
+                </Map>
+            </div>
             <div className={styles.info}>
                 <div className={styles.clima}>
                     <div className={styles.climaHoje}>
