@@ -16,6 +16,7 @@ import { useState, useEffect } from 'react'
 // Apis
 import { getWeather } from '../../../API/getWeather'
 import { getLocalization } from '../../../API/getLocalization'
+import { getSoil } from '../../../API/getSoil'
 
 // Map
 import Map, { Source, Layer } from 'react-map-gl';
@@ -31,9 +32,9 @@ export default function Geral({ terreno }) {
     mapboxgl.accessToken = TOKEN_MAPBOX;
 
     const [climaTerreno, setClimaTerreno] = useState([])
-    const [endereco, setEndereco] = useState([])
     const [cidade, setCidade] = useState('')
     const [estado, setEstado] = useState('')
+    const [solo, setSolo] = useState([])
 
     const geojson = {
         type: 'FeatureCollection',
@@ -72,7 +73,6 @@ export default function Geral({ terreno }) {
         const fetchLocalization = async () => {
             try {
                 const localizationData = await getLocalization(terreno.center)
-                setEndereco(localizationData)
                 setCidade(localizationData.features[0].properties.city)
                 setEstado(localizationData.features[0].properties.county)
                 return localizationData
@@ -81,17 +81,40 @@ export default function Geral({ terreno }) {
                 throw error; // Propague o erro para interromper a execução
             }
         }
+        const fetchSoil = async () => {
+            try {
+                const soilData = await getSoil(terreno.id)
+                setSolo(soilData)
+                return soilData
+            } catch (error) {
+                console.error('Erros de fetch weather:', error);
+                throw error; // Propague o erro para interromper a execução
+            }
+        }
 
         fetchWeather()
             .then(fetchLocalization)
+            .then(fetchSoil)
             .catch(error => console.error('Erro durante o encadeamento:', error));
     }, [])
 
-    //console.log(`${terreno.center}`)
+    //console.log(terreno)
     //console.log(climaTerreno)
     //console.log(endereco)
+    //console.log(solo)
 
     const celsius = parseInt((climaTerreno?.main?.temp - 273.15).toFixed(2));
+    const tempSolo = parseInt((solo?.t0 - 273.15).toFixed(2));
+    const tempSolo10cm = parseInt((solo?.t10 - 273.15).toFixed(2));
+
+    function formatAsPercentage(num) {
+        return new Intl.NumberFormat('default', {
+            style: 'percent',
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+        }).format(num / 100);
+    }
+
 
     return (
         <div className={styles.mainContent} id='DEUSFIEL'>
@@ -127,15 +150,15 @@ export default function Geral({ terreno }) {
                     <ul className={styles.info}>
                         <li>
                             <p>Temperatura na superfície</p>
-                            <h2>{terreno?.clima?.temperaturaSuperficie} ºC</h2>
+                            <h2>{tempSolo} ºC</h2>
                         </li>
                         <li>
                             <p>Temperatura na 10cm abaixo</p>
-                            <h2>{terreno?.clima?.temperaturaSoloAbaixo} ºC</h2>
+                            <h2>{tempSolo10cm} ºC</h2>
                         </li>
                         <li>
                             <p>Umidade do solo</p>
-                            <h2>{terreno?.clima?.umidadeSolo} ºC</h2>
+                            <h2>{formatAsPercentage(solo.moisture*100)}</h2>
                         </li>
                     </ul>
                 </div>
