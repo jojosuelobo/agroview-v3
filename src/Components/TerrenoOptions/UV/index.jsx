@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import styles from './UV.module.sass'
 
 // Icons
@@ -13,6 +12,7 @@ import { useState, useEffect } from 'react'
 
 // Apis
 import { getUV } from '../../../API/getUV'
+import { getUV2 } from '../../../API/getUV2'
 import { getUVweek } from '../../../API/getUVweek'
 
 // Map
@@ -29,7 +29,7 @@ export default function UV({ terreno }) {
   mapboxgl.accessToken = TOKEN_MAPBOX;
 
   const [uv, setUV] = useState([])
-  const [uvWeek, setUVweek] = useState([])
+  const [uvData, setUVdata] = useState([])
 
   const geojson = {
     type: 'FeatureCollection',
@@ -65,10 +65,10 @@ export default function UV({ terreno }) {
         throw error; // Propague o erro para interromper a execução
       }
     }
-    const fetchUVweek = async () => {
+    const fetchUV2 = async () => {
       try {
-        const uvData = await getUVweek(terreno.id);
-        setUVweek(uvData);
+        const uvData = await getUV2(terreno.center);
+        setUVdata(uvData);
         return uvData;
       } catch (error) {
         console.error('Erros de fetch UV:', error);
@@ -76,7 +76,7 @@ export default function UV({ terreno }) {
       }
     }
     fetchUV()
-      .then(fetchUVweek)
+      .then(fetchUV2)
       .catch(error => console.error('Erro durante o encadeamento:', error));
   }, [])
 
@@ -88,7 +88,10 @@ export default function UV({ terreno }) {
     }).format(num / 100);
   }
 
-  console.log(uvWeek)
+  const uvResult = (uvData?.result?.uv) * 10
+
+  console.log(uvData)
+  console.log(uv)
 
   return (
     <div className={styles.mainContent}>
@@ -113,7 +116,8 @@ export default function UV({ terreno }) {
           </div>
           <div className={styles.dados}>
             <div className={styles.data}>
-              Nível UVI: {formatAsPercentage(uv.uvi)}
+              <p>Nível UVI: {formatAsPercentage(uv.uvi)}</p>
+              <p>Nível UV: {uvResult}</p>
             </div>
             <div>
               Graficos circulares

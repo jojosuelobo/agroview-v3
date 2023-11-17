@@ -22,3 +22,6 @@ https://visgl.github.io/react-map-gl/docs/api-reference/source
 
 ### Adress by lat/lon
 https://www.geoapify.com/reverse-geocoding-api
+
+### Open Weather
+https://openweathermap.org/api/one-call-3
