@@ -63,22 +63,9 @@ export default function Dashboard() {
     }
 
     const fetchDataImages = async (polygonsData) => {
-      // try {
-      //   const imagensPromises = polygonsData.map(terreno => getImages(terreno.id));
-      //   const imagensResponses = await Promise.all(imagensPromises);
-
-      //   const novoImagemTerrenos = imagensResponses.reduce((acc, imagemResponse, index) => {
-      //     acc = { ...acc, ...imagemResponse };
-      //     return acc;
-      //   }, {});
-
-      //   setImagemTerrenos(novoImagemTerrenos);
-      // } catch (error) {
-      //   console.error('Erro ao buscar dados:', error);
-      // }
-
       const mapasPromise = () => {
         const novosMapas = polygonsData.map(terreno => {
+          
           return {
             type: 'FeatureCollection',
             features: [
@@ -95,16 +82,28 @@ export default function Dashboard() {
         setMapas(novosMapas);
       };
 
-      mapasPromise();
+      const tempPromise = async () => {
+        for (const terrenoItem of terrenos) {
+          const center = terrenoItem.center;
+          const weatherData = await getWeather(center)
 
+          setClimaTerreno(weatherData)
+          console.log(climaTerreno)
+        }
+      }
+
+      mapasPromise();
+      tempPromise()
     };
 
     fetchDataPolygons()
       .then(fetchDataImages)
       .catch(error => console.error('Erro durante o encadeamento:', error));
+
   }, []);
 
   const navigate = useNavigate()
+  console.log(climaTerreno)
 
   const layerStyle = {
     id: 'maine',
@@ -152,7 +151,7 @@ export default function Dashboard() {
 
                 <div className={styles.info}>
                   <p>Hectares: {parseInt(terreno.area)} ha</p>
-                  <p>Temperatura: {} ºC</p>
+                  <p>Temperatura: {climaTerreno[index]} ºC</p>
                   <p>{cidade}, {estado}</p>
                   <button className={styles.buttonOpen} onClick={() => navigate(`/terreno/${terreno.id}`, { state: { terreno } })}>Exibir</button>
                 </div>
