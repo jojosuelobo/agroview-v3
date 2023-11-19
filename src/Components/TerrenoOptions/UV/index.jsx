@@ -22,6 +22,10 @@ import mapboxgl from 'mapbox-gl';
 import MapboxDraw from "@mapbox/mapbox-gl-draw";
 import "mapbox-gl/dist/mapbox-gl.css"
 
+// Graph
+import Chart from 'chart.js/auto'
+
+
 export default function UV({ terreno }) {
   const { id } = useParams()
 
@@ -76,7 +80,7 @@ export default function UV({ terreno }) {
       }
     }
     fetchUV()
-      .then(fetchUV2)
+      //.then(fetchUV2)
       .catch(error => console.error('Erro durante o encadeamento:', error));
   }, [])
 
@@ -88,10 +92,8 @@ export default function UV({ terreno }) {
     }).format(num / 100);
   }
 
-  const uvResult = (uvData?.result?.uv) * 10
-
-  console.log(uvData)
   console.log(uv)
+  console.log(uvData)
 
   return (
     <div className={styles.mainContent}>
@@ -117,10 +119,18 @@ export default function UV({ terreno }) {
           <div className={styles.dados}>
             <div className={styles.data}>
               <p>Nível UVI: {formatAsPercentage(uv.uvi)}</p>
-              <p>Nível UV: {uvResult}</p>
+              <p>Nível UV: {uvData?.result?.uv}</p>
+                {
+                  (uvData?.result?.uv < 3) ? <p>Nível Baixo</p> :
+                  (uvData?.result?.uv < 6) ? <p>Nível Moderado</p> :
+                  (uvData?.result?.uv < 8) ? <p>Nível Alto</p> :
+                  (uvData?.result?.uv < 11) ? <p>Nível Muito Alto</p> :
+                  (uvData?.result?.uv > 11) ? <p>Nível Muito Alto</p> :
+                  <p>Carregando...</p>
+                }
             </div>
             <div>
-              Graficos circulares
+              <canvas id="myChart"></canvas>
             </div>
           </div>
         </div>

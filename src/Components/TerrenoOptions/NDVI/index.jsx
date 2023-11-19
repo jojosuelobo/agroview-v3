@@ -11,6 +11,10 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
+// Moment
+import moment from 'moment';
+
+
 // Apis
 import { getNDVI } from '../../../API/getNDVI'
 
@@ -66,6 +70,8 @@ export default function NDVI({ terreno }) {
       .catch(error => console.error('Erro durante o encadeamento:', error));
   }, [])
 
+  const dataAtual = moment().format('DD/MM/YYYY');
+
   console.log(ndvi)
 
   return (
@@ -90,7 +96,25 @@ export default function NDVI({ terreno }) {
             </Map>
           </div>
           <div className={styles.data}>
-            INFOS AQUI
+            <h3 className={styles.date}>{dataAtual}</h3>
+            <ul className={styles.list}>
+              <li>
+                <p>Max</p>
+                <p>{(ndvi[0]?.data?.max)?.toFixed(2)}</p>
+              </li>
+              <li>
+                <p>Mean</p>
+                <p>{(ndvi[0]?.data?.mean)?.toFixed(2)}</p>
+              </li>
+              <li>
+                <p>Média</p>
+                <p>{(ndvi[0]?.data?.median)?.toFixed(2)}</p>
+              </li>
+              <li>
+                <p>Min</p>
+                <p>{(ndvi[0]?.data?.min)?.toFixed(2)}</p>
+              </li>
+            </ul>
           </div>
         </div>
 

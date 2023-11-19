@@ -25,3 +25,6 @@ https://www.geoapify.com/reverse-geocoding-api
 
 ### Open Weather
 https://openweathermap.org/api/one-call-3
+
+### graficos
+https://www.chartjs.org/docs/latest/getting-started/usage.html
