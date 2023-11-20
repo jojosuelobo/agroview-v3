@@ -1,7 +1,10 @@
 /* eslint-disable no-unused-vars */
 import styles from './Clima.module.sass'
+
 // Icons
 import { BiSolidSun } from 'react-icons/bi'
+import { FiRefreshCcw } from "react-icons/fi";
+import { AiOutlineLoading } from "react-icons/ai";
 
 // Axios
 import axios from 'axios'
@@ -44,6 +47,11 @@ export default function Clima({ terreno }) {
   const [dates, setDates] = useState([])
   const [tempMin, setTempMin] = useState([])
   const [tempMax, setTempMax] = useState([])
+
+  const amanha = moment().add(1, 'days').format('DD/MM');
+  const [tempAmanha, setTempAmanha] = useState([])
+  const [sensacaoTermica, setSensacaoTermica] = useState([])
+
 
   const geojson = {
     type: 'FeatureCollection',
@@ -116,7 +124,7 @@ export default function Clima({ terreno }) {
     }
 
     const fetchGraph = async (weatherForecastData) => {
-      console.log(weatherForecastData)
+      //console.log(weatherForecastData)
       const extractedDates = (weatherForecastData.list).map(item => converterData(item.dt_txt));
       setDates(extractedDates)
 
@@ -125,6 +133,9 @@ export default function Clima({ terreno }) {
 
       const extractedMax = (weatherForecastData.list).map(item => (convertToCelsius(item.main.temp_max) + Math.floor(Math.random() * 4) + 1))
       setTempMax(extractedMax)
+
+      setTempAmanha(convertToCelsius(weatherForecastData.list[3].main.temp))
+      setSensacaoTermica(convertToCelsius(weatherForecastData.list[0].main.feels_like))
 
       const ctx = document.getElementById('MinMax');
       const labels = dates;
@@ -179,7 +190,12 @@ export default function Clima({ terreno }) {
   const celsius = convertToCelsius(climaTerreno?.main?.temp);
 
   //console.log(climaTerreno) 
-  //console.log(forecastGraph.list)
+  console.log(forecastGraph)
+
+  const divStyle = {
+    width: '90vh', // Defina a largura da div em porcentagem desejada
+    margin: 'auto', // Centraliza a div na página
+  };
 
   return (
     <>
@@ -200,22 +216,38 @@ export default function Clima({ terreno }) {
               <Source id="my-data" type="geojson" data={geojson}>
                 <Layer {...layerStyle} />
               </Source>
+              <p>{cidade}, {estado}</p>
+
             </Map>
+
             <div className={styles.climaHoje}>
               <div className={styles.climaText}>
-                <p>Hoje</p>
-                <p className={styles.temperatura}> {celsius} ºC</p>
+                <p className={styles.bold}>Temperatura Hoje</p>
+                <ul>
+                  <li>
+                    <p className={styles.temperatura}> {celsius? celsius : ''} ºC</p>
+                  </li>
+                  <li>
+                    <p className={styles.bold}> Sensação térmica</p>
+                  </li>
+                  <li>
+                    <p className={styles.temperatura}> {sensacaoTermica? sensacaoTermica : ''} ºC</p>
+                  </li>
+
+                </ul>
               </div>
-              <BiSolidSun className={styles.icon} />
+              <div className={styles.climaText}>
+                <p className={styles.bold}>Amanhã {amanha? amanha : ''}</p>
+                <p className={styles.temperatura}> {tempAmanha? tempAmanha :''} ºC</p>
+              </div>
             </div>
-            <p>{cidade}, {estado}</p>
-          </div>
+          </div>  
         </div>
       </div>
       <div className={styles.graficos}>
         <div>
-          <button onClick={() => setSentinela(true)}>Atualizar</button>
-          <canvas id="MinMax" width="950" height="600"></canvas>
+          <FiRefreshCcw className={styles.icon} onClick={() => setSentinela(true)} />
+          <canvas id="MinMax" style={divStyle}></canvas>
         </div>
       </div>
     </>
