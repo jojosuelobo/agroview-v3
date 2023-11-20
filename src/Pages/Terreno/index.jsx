@@ -38,7 +38,6 @@ export default function Terreno() {
             <nav className={styles.header}>
                 <div className={styles.textHeader}>
                     <h1> <TbArrowBack className={styles.icon} onClick={() => navigate('/')} /> {terreno.name} </h1>
-                    <p>Criado em: 16/05/2023</p>
                 </div>
                 <ul className={styles.options}>
                     <li className={styles.geral} onClick={() => setAba('Geral')}>Geral</li>

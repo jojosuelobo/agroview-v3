@@ -27,7 +27,7 @@ export default function Notifications() {
 
   return (
     <div className={styles.section}>
-      <h1>Log de registro</h1>
+      <h1>Notificações</h1>
       <div className={styles.error_list}>
         <ul className={styles.list}>
           {notifications.map(notification => (

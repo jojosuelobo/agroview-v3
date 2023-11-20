@@ -25,7 +25,9 @@ export default function Aside() {
                     </Link>
                 </ul>
                 <div className={styles.other_options}>
-                    <a><GrAddCircle className={styles.icon} /> <CadastrarTerreno/> </a>
+                    <a>
+                        <GrAddCircle className={styles.icon} />
+                        <CadastrarTerreno /> </a>
                 </div>
             </div>
             <div className={styles.down}>
