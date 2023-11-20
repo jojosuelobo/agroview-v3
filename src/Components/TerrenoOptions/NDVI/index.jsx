@@ -82,7 +82,6 @@ export default function NDVI({ terreno }) {
       const ctx = document.getElementById('myChart')
       const labels = [`${sixDaysAgo}`, `${fiveDaysAgo}`, `${forDaysAgo}`, `${threeDaysAgo}`, `${ontemDeOntem}`, `${ontem}`, `${dataAtual}`];
 
-      console.log(ndviData)
       // Criação do gráfico
       const myChart = new Chart(ctx, {
         type: 'bar',
@@ -134,7 +133,6 @@ export default function NDVI({ terreno }) {
       .catch(error => console.error('Erro durante o encadeamento:', error));
   }, [])
 
-  console.log(ndvi)
 
   return (
     <>

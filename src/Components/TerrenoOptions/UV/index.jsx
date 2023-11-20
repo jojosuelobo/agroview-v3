@@ -120,23 +120,17 @@ export default function UV({ terreno }) {
             <div className={styles.data}>
               <p>Nível UVI: {formatAsPercentage(uv.uvi)}</p>
               <p>Nível UV: {uvData?.result?.uv}</p>
-                {
-                  (uvData?.result?.uv < 3) ? <p>Nível Baixo</p> :
+              {
+                (uvData?.result?.uv < 3) ? <p>Nível Baixo</p> :
                   (uvData?.result?.uv < 6) ? <p>Nível Moderado</p> :
-                  (uvData?.result?.uv < 8) ? <p>Nível Alto</p> :
-                  (uvData?.result?.uv < 11) ? <p>Nível Muito Alto</p> :
-                  (uvData?.result?.uv > 11) ? <p>Nível Muito Alto</p> :
-                  <p>Carregando...</p>
-                }
-            </div>
-            <div>
-              <canvas id="myChart"></canvas>
+                    (uvData?.result?.uv < 8) ? <p>Nível Alto</p> :
+                      (uvData?.result?.uv < 11) ? <p>Nível Muito Alto</p> :
+                        (uvData?.result?.uv > 11) ? <p>Nível Muito Alto</p> :
+                          <p>Carregando...</p>
+              }
             </div>
           </div>
         </div>
-
-
-
       </div>
     </div>
   )
