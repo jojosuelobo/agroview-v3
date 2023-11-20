@@ -58,6 +58,14 @@ export default function NDVI({ terreno }) {
     }
   };
 
+  const dataAtual = moment().format('DD/MM/YYYY');
+  const ontem = moment().subtract(1, 'days').format('DD/MM/YYYY');
+  const ontemDeOntem = moment().subtract(2, 'days').format('DD/MM/YYYY');
+  const threeDaysAgo = moment().subtract(3, 'days').format('DD/MM/YYYY');
+  const forDaysAgo = moment().subtract(4, 'days').format('DD/MM/YYYY');
+  const fiveDaysAgo = moment().subtract(5, 'days').format('DD/MM/YYYY');
+  const sixDaysAgo = moment().subtract(6, 'days').format('DD/MM/YYYY');
+
   useEffect(() => {
     const fetchNDVI = async () => {
       try {
@@ -70,18 +78,27 @@ export default function NDVI({ terreno }) {
       }
     }
 
-    const createGraph = () => {
+    const createGraph = (ndviData) => {
       const ctx = document.getElementById('myChart')
-      const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+      const labels = [`${sixDaysAgo}`, `${fiveDaysAgo}`, `${forDaysAgo}`, `${threeDaysAgo}`, `${ontemDeOntem}`, `${ontem}`, `${dataAtual}`];
 
+      console.log(ndviData)
       // Criação do gráfico
       const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
           labels: labels,
           datasets: [{
-            label: 'My First Dataset',
-            data: [65, 59, 80, 81, 56, 55, 40],
+            label: 'Níves NDVI',
+            data: [
+              ndviData[6].data.median,
+              ndviData[5].data.median,
+              ndviData[4].data.median,
+              ndviData[3].data.median,
+              ndviData[2].data.median,
+              ndviData[1].data.median,
+              ndviData[0].data.median
+            ],
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(255, 159, 64, 0.2)',
@@ -98,7 +115,7 @@ export default function NDVI({ terreno }) {
               'rgb(75, 192, 192)',
               'rgb(54, 162, 235)',
               'rgb(153, 102, 255)',
-              'rgb(201, 203, 207)'
+              'rgb(0, 0, 0)'
             ],
             borderWidth: 1
           }]
@@ -116,8 +133,6 @@ export default function NDVI({ terreno }) {
       .then(createGraph)
       .catch(error => console.error('Erro durante o encadeamento:', error));
   }, [])
-
-  const dataAtual = moment().format('DD/MM/YYYY');
 
   console.log(ndvi)
 
@@ -141,67 +156,75 @@ export default function NDVI({ terreno }) {
                 </Source>
               </Map>
             </div>
-            <div className={styles.data}>
-              <h3 className={styles.date}>{dataAtual}</h3>
-              <ul className={styles.list}>
-                <li>
-                  <p>Max</p>
-                  <p>{(ndvi[0]?.data?.max)?.toFixed(2)}</p>
-                </li>
-                <li>
-                  <p>Mean</p>
-                  <p>{(ndvi[0]?.data?.mean)?.toFixed(2)}</p>
-                </li>
-                <li>
-                  <p>Média</p>
-                  <p>{(ndvi[0]?.data?.median)?.toFixed(2)}</p>
-                </li>
-                <li>
-                  <p>Min</p>
-                  <p>{(ndvi[0]?.data?.min)?.toFixed(2)}</p>
-                </li>
-              </ul>
+            <ul className={styles.data}>
 
-              <h3 className={styles.date}>{dataAtual}</h3>
-              <ul className={styles.list}>
-                <li>
-                  <p>Max</p>
-                  <p>{(ndvi[0]?.data?.max)?.toFixed(2)}</p>
-                </li>
-                <li>
-                  <p>Mean</p>
-                  <p>{(ndvi[0]?.data?.mean)?.toFixed(2)}</p>
-                </li>
-                <li>
-                  <p>Média</p>
-                  <p>{(ndvi[0]?.data?.median)?.toFixed(2)}</p>
-                </li>
-                <li>
-                  <p>Min</p>
-                  <p>{(ndvi[0]?.data?.min)?.toFixed(2)}</p>
-                </li>
-              </ul>
+              <li className={styles.item}>
+                <h3 className={styles.date}>{dataAtual}</h3>
+                <ul className={styles.list}>
+                  <li>
+                    <p>Max</p>
+                    <p>{(ndvi[0]?.data?.max)?.toFixed(2)}</p>
+                  </li>
+                  <li>
+                    <p>Mean</p>
+                    <p>{(ndvi[0]?.data?.mean)?.toFixed(2)}</p>
+                  </li>
+                  <li>
+                    <p>Média</p>
+                    <p>{(ndvi[0]?.data?.median)?.toFixed(2)}</p>
+                  </li>
+                  <li>
+                    <p>Min</p>
+                    <p>{(ndvi[0]?.data?.min)?.toFixed(2)}</p>
+                  </li>
+                </ul>
+              </li>
 
-              <h3 className={styles.date}>{dataAtual}</h3>
-              <ul className={styles.list}>
-                <li>
-                  <p>Max</p>
-                  <p>{(ndvi[0]?.data?.max)?.toFixed(2)}</p>
-                </li>
-                <li>
-                  <p>Mean</p>
-                  <p>{(ndvi[0]?.data?.mean)?.toFixed(2)}</p>
-                </li>
-                <li>
-                  <p>Média</p>
-                  <p>{(ndvi[0]?.data?.median)?.toFixed(2)}</p>
-                </li>
-                <li>
-                  <p>Min</p>
-                  <p>{(ndvi[0]?.data?.min)?.toFixed(2)}</p>
-                </li>
-              </ul>
-            </div>
+              <li className={styles.item}>
+                <h3 className={styles.date}>{ontem}</h3>
+                <ul className={styles.list}>
+                  <li>
+                    <p>Max</p>
+                    <p>{(ndvi[1]?.data?.max)?.toFixed(2)}</p>
+                  </li>
+                  <li>
+                    <p>Mean</p>
+                    <p>{(ndvi[1]?.data?.mean)?.toFixed(2)}</p>
+                  </li>
+                  <li>
+                    <p>Média</p>
+                    <p>{(ndvi[1]?.data?.median)?.toFixed(2)}</p>
+                  </li>
+                  <li>
+                    <p>Min</p>
+                    <p>{(ndvi[1]?.data?.min)?.toFixed(2)}</p>
+                  </li>
+                </ul>
+              </li>
+
+              <li className={styles.item}>
+                <h3 className={styles.date}>{ontemDeOntem}</h3>
+                <ul className={styles.list}>
+                  <li>
+                    <p>Max</p>
+                    <p>{(ndvi[2]?.data?.max)?.toFixed(2)}</p>
+                  </li>
+                  <li>
+                    <p>Mean</p>
+                    <p>{(ndvi[2]?.data?.mean)?.toFixed(2)}</p>
+                  </li>
+                  <li>
+                    <p>Média</p>
+                    <p>{(ndvi[2]?.data?.median)?.toFixed(2)}</p>
+                  </li>
+                  <li>
+                    <p>Min</p>
+                    <p>{(ndvi[2]?.data?.min)?.toFixed(2)}</p>
+                  </li>
+                </ul>
+              </li>
+
+            </ul>
           </div>
         </div>
       </div>
