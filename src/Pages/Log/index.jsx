@@ -11,6 +11,10 @@ import { useState, useEffect } from 'react'
 // Icons
 import { AiOutlineWarning } from 'react-icons/ai'
 
+// Balloon
+import 'balloon-css';
+
+
 export default function Log() {
   const url = 'http://localhost:3000/log'
   const [logs, setLogs] = useState([])

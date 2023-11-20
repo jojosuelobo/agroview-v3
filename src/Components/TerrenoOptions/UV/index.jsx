@@ -25,6 +25,7 @@ import "mapbox-gl/dist/mapbox-gl.css"
 // Graph
 import Chart from 'chart.js/auto'
 
+import 'balloon-css';
 
 export default function UV({ terreno }) {
   const { id } = useParams()
@@ -118,8 +119,18 @@ export default function UV({ terreno }) {
           </div>
           <div className={styles.dados}>
             <div className={styles.data}>
-              <p>Nível UVI: {formatAsPercentage(uv.uvi)}</p>
-              <p>Nível UV: {uvData?.result?.uv}</p>
+              <p
+                aria-label="Medida dos níveis da radiação solar ultravioleta que efetivamente contribui para a formação de uma queimadura na pele"
+                data-balloon-pos="up"
+              >
+                Nível UVI: {formatAsPercentage(uv.uvi)}
+              </p>
+              <p
+                aria-label="Medida dos níveis da radiação solar ultravioleta que efetivamente contribui para a formação de uma queimadura na pele"
+                data-balloon-pos="up"
+              >
+                Nível UV: {uvData?.result?.uv}
+              </p>
               {
                 (uvData?.result?.uv < 3) ? <p>Nível Baixo</p> :
                   (uvData?.result?.uv < 6) ? <p>Nível Moderado</p> :
