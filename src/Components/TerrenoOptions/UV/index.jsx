@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import styles from './UV.module.sass'
 
 // Icons
@@ -13,6 +12,7 @@ import { useState, useEffect } from 'react'
 
 // Apis
 import { getUV } from '../../../API/getUV'
+import { getUV2 } from '../../../API/getUV2'
 import { getUVweek } from '../../../API/getUVweek'
 
 // Map
@@ -22,6 +22,10 @@ import mapboxgl from 'mapbox-gl';
 import MapboxDraw from "@mapbox/mapbox-gl-draw";
 import "mapbox-gl/dist/mapbox-gl.css"
 
+// Graph
+import Chart from 'chart.js/auto'
+
+
 export default function UV({ terreno }) {
   const { id } = useParams()
 
@@ -29,7 +33,7 @@ export default function UV({ terreno }) {
   mapboxgl.accessToken = TOKEN_MAPBOX;
 
   const [uv, setUV] = useState([])
-  const [uvWeek, setUVweek] = useState([])
+  const [uvData, setUVdata] = useState([])
 
   const geojson = {
     type: 'FeatureCollection',
@@ -65,10 +69,10 @@ export default function UV({ terreno }) {
         throw error; // Propague o erro para interromper a execução
       }
     }
-    const fetchUVweek = async () => {
+    const fetchUV2 = async () => {
       try {
-        const uvData = await getUVweek(terreno.id);
-        setUVweek(uvData);
+        const uvData = await getUV2(terreno.center);
+        setUVdata(uvData);
         return uvData;
       } catch (error) {
         console.error('Erros de fetch UV:', error);
@@ -76,7 +80,7 @@ export default function UV({ terreno }) {
       }
     }
     fetchUV()
-      .then(fetchUVweek)
+      //.then(fetchUV2)
       .catch(error => console.error('Erro durante o encadeamento:', error));
   }, [])
 
@@ -88,7 +92,8 @@ export default function UV({ terreno }) {
     }).format(num / 100);
   }
 
-  console.log(uvWeek)
+  console.log(uv)
+  console.log(uvData)
 
   return (
     <div className={styles.mainContent}>
@@ -113,16 +118,19 @@ export default function UV({ terreno }) {
           </div>
           <div className={styles.dados}>
             <div className={styles.data}>
-              Nível UVI: {formatAsPercentage(uv.uvi)}
-            </div>
-            <div>
-              Graficos circulares
+              <p>Nível UVI: {formatAsPercentage(uv.uvi)}</p>
+              <p>Nível UV: {uvData?.result?.uv}</p>
+              {
+                (uvData?.result?.uv < 3) ? <p>Nível Baixo</p> :
+                  (uvData?.result?.uv < 6) ? <p>Nível Moderado</p> :
+                    (uvData?.result?.uv < 8) ? <p>Nível Alto</p> :
+                      (uvData?.result?.uv < 11) ? <p>Nível Muito Alto</p> :
+                        (uvData?.result?.uv > 11) ? <p>Nível Muito Alto</p> :
+                          <p>Carregando...</p>
+              }
             </div>
           </div>
         </div>
-
-
-
       </div>
     </div>
   )
