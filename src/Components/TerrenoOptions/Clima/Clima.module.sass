@@ -1,6 +1,8 @@
 .mainContent
     color: #002F24
     display: flex
+    .bold
+        font-weight: bold
     .info
         margin-left: 30px
         display: flex
@@ -21,7 +23,8 @@
                 margin-bottom: 30px
             .climaHoje
                 display: flex
-                margin-top: -2rem
+                margin-top: -5.3rem
+                justify-content: space-between
                 //justify-content: center
                 //align-items: center
                 //text-align: center
@@ -34,3 +37,25 @@
                 .icon
                     font-size: 64px
                     color: orange
+.graficos
+    margin-left: 1rem
+    .icon
+        cursor: pointer
+        font-size: 32px
+        animation: rotate 2s linear infinite
+    .icon:hover
+        transition: 1.5s
+        transform: rotate(-360deg)
+        -ms-transform: rotate(-360deg)
+        -webkit-transform: rotate(-360deg)
+    // .iconLoading
+    //     transition: none
+    //     transform: none
+    //     -ms-transform: none
+    //     -webkit-transform: none
+    //     @keyframes rotate
+    //         0%
+    //             transform: rotate(0deg)
+
+    //         100%
+    //             transform: rotate(-360deg)

@@ -5,6 +5,7 @@ import image from '../../../../public/image.png'
 // Icons
 import { BiSolidSun } from 'react-icons/bi'
 import { AiFillCalendar } from 'react-icons/ai'
+import { AiOutlineLoading } from "react-icons/ai";
 
 // Axios
 import axios from 'axios'
@@ -139,26 +140,34 @@ export default function Geral({ terreno }) {
                     <div className={styles.climaHoje}>
                         <div className={styles.climaText}>
                             <p>Hoje</p>
-                            <p className={styles.temperatura}> {celsius} ºC</p>
+                            <p className={styles.temperatura}> {celsius ?
+                                <p>{celsius} °C</p> :
+                                <AiOutlineLoading className={styles.loading} />}
+                            </p>
                         </div>
                         <BiSolidSun className={styles.icon} />
                     </div>
-                    <p>{cidade}, {estado}</p>
+                    <p>
+                        {cidade ?
+                            <p>{cidade}, {estado}</p> :
+                            <AiOutlineLoading className={styles.loading} />
+                        }
+                    </p>
                 </div>
                 <div className={styles.solo}>
                     <h1>Informações do Solo</h1>
                     <ul className={styles.info}>
                         <li>
                             <p>Temperatura na superfície</p>
-                            <h2>{tempSolo} ºC</h2>
+                            <h2>{tempSolo? tempSolo : <AiOutlineLoading className={styles.loading} />} ºC</h2>
                         </li>
                         <li>
                             <p>Temperatura na 10cm abaixo</p>
-                            <h2>{tempSolo10cm} ºC</h2>
+                            <h2>{tempSolo10cm? tempSolo10cm : <AiOutlineLoading className={styles.loading} />} ºC</h2>
                         </li>
                         <li>
                             <p>Umidade do solo</p>
-                            <h2>{formatAsPercentage(solo.moisture*100)}</h2>
+                            <h2>{solo.moisture? formatAsPercentage(solo.moisture * 100) : <AiOutlineLoading className={styles.loading} />}</h2>
                         </li>
                     </ul>
                 </div>

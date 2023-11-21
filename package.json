@@ -17,6 +17,7 @@
     "@turf/collect": "^6.5.0",
     "@turf/turf": "^6.5.0",
     "axios": "^1.5.1",
+    "balloon-css": "^1.2.0",
     "chart.js": "^4.4.0",
     "geojson": "^0.5.0",
     "json-server": "^0.17.4",

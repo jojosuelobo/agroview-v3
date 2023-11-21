@@ -53,3 +53,15 @@
                 font-size: 64px
                 color: #002F24
                 cursor: pointer
+.loading
+    transition: none
+    transform: none
+    -ms-transform: none
+    -webkit-transform: none
+    animation: rotate 0.5s linear infinite
+    @keyframes rotate
+        0%
+            transform: rotate(0deg)
+
+        100%
+            transform: rotate(-360deg)

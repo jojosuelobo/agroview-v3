@@ -48,3 +48,16 @@ a:visited {
   border-radius: 30px !important;
 
 }
+
+.rt-reset{
+  cursor: pointer;
+  color: black;
+  background: white;
+  font-size: 18px
+
+}
+.rt-reset:hover{
+  color: #002F24;
+  font-weight: bold;
+
+}
