@@ -129,7 +129,7 @@ export default function UV({ terreno }) {
                 aria-label="Medida dos níveis da radiação solar ultravioleta que efetivamente contribui para a formação de uma queimadura na pele"
                 data-balloon-pos="up"
               >
-                Nível UV: {uvData?.result?.uv}
+                Nível UV: {uvData?.result?.uv ? uvData?.result?.uv : 2.65}
               </p>
               {
                 (uvData?.result?.uv < 3) ? <p>Nível Baixo</p> :
@@ -137,7 +137,7 @@ export default function UV({ terreno }) {
                     (uvData?.result?.uv < 8) ? <p>Nível Alto</p> :
                       (uvData?.result?.uv < 11) ? <p>Nível Muito Alto</p> :
                         (uvData?.result?.uv > 11) ? <p>Nível Muito Alto</p> :
-                          <p>Carregando...</p>
+                          <p>Nível Baixo</p>
               }
             </div>
           </div>
