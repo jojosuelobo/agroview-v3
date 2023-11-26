@@ -52,7 +52,7 @@ export default function Cadastro() {
         const map = new mapboxgl.Map({
             container: 'map', // container ID
             style: 'mapbox://styles/mapbox/satellite-v9', // style URL
-            center: [-74.5, 40], // starting position [lng, lat]
+            center: [-41.12622859362756, -20.31927994915663], // starting position [lng, lat]
             zoom: 12, // starting zoom
         });
 
