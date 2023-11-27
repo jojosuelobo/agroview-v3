@@ -1,3 +1,9 @@
+![GitHub License](https://img.shields.io/github/license/jojosuelobo/agroview-v3)
+![GitHub contributors](https://img.shields.io/github/contributors-anon/jojosuelobo/agroview-v3)
+![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/jojosuelobo/agroview-v3)
+![GitHub forks](https://img.shields.io/github/forks/jojosuelobo/agroview-v3)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg)](https://github.com/nhn/tui.editor/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
+
 # AgroView
 
 O aplicativo **AgroView** vem para facilitar o trabalho do produtor rural no rendimento de seu negócio e plantação, com um painel de dados e monitoramento de seu plantio, aumentando sua produtividade e lucratividade a médio e longo prazo.
