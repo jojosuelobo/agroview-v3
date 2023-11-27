@@ -1,30 +1,51 @@
 # AgroView
 
-### AgroMonitoring
+O aplicativo **AgroView** vem para facilitar o trabalho do produtor rural no rendimento de seu negócio e plantação, com um painel de dados e monitoramento de seu plantio, aumentando sua produtividade e lucratividade a médio e longo prazo.
 
-**Responde de Polygons**
-https://agromonitoring.com/api/polygons
 
-**Response de Imagens**
-https://agromonitoring.com/api/images#begin
+## Getting Started
 
-**Response de Weather**
-https://agromonitoring.com/api/current-weather
+Estas instruções lhe darão uma cópia do projeto em funcionamento
+sua máquina local para fins de desenvolvimento e teste. Veja implantação
+para obter notas sobre a implantação do projeto em um sistema ativo.
 
-### MapBox
+### Requisitos
 
-**gl draw**
-https://docs.mapbox.com/mapbox-gl-js/example/mapbox-gl-draw/
+- node
+- npm
 
-**map react**
-https://visgl.github.io/react-map-gl/docs/api-reference/map
-https://visgl.github.io/react-map-gl/docs/api-reference/source
+## API's 
+- [Agro Monitoring](https://agromonitoring.com)
+- [MapBox gl Draw](https://docs.mapbox.com/mapbox-gl-js/example/mapbox-gl-draw)
+- [React map gl](https://visgl.github.io/react-map-gl/docs/api-reference/map)
+- [Geoapify](https://www.geoapify.com/reverse-geocoding-api)
+- [Open Weather](https://openweathermap.org/api/one-call-3)
+- [ChartJS](https://www.chartjs.org/docs/latest/getting-started/usage.html)
 
-### Adress by lat/lon
-https://www.geoapify.com/reverse-geocoding-api
 
-### Open Weather
-https://openweathermap.org/api/one-call-3
+### Installing
 
-### graficos
-https://www.chartjs.org/docs/latest/getting-started/usage.html
+Uma série passo a passo de exemplos que mostram como obter um desenvolvimento
+ambiente em execução
+
+clone o projeo
+
+    git clone https://github.com/jojosuelobo/agroview-v3.git
+
+Instalação
+
+    npm i
+    
+Execução
+
+    npm run dev
+
+Após os passos acima o projeto será aberto na página web http://localhost:5173/
+
+## Contribuições
+
+- Dê Fork no projeto
+- Crie uma feature branch (git checkout -b feature/[feature-name])
+- Commit suas alterações (git commit -am '[Mensagem]')
+- Dê push na branch (git push origin feature/[feature-name])
+- Abra um PR (Pull Request)
