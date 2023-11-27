@@ -151,8 +151,8 @@ export default function Dashboard() {
 
                 <div className={styles.info}>
                   <p>Hectares: {parseInt(terreno.area)} ha</p>
-                  <p>Temperatura: {climaTerreno[index]} ºC</p>
-                  <p>{cidade}, {estado}</p>
+                  {/* <p>Temperatura: {climaTerreno[index]} ºC</p>
+                  <p>{cidade}, {estado}</p> */}
                   <button className={styles.buttonOpen} onClick={() => navigate(`/terreno/${terreno.id}`, { state: { terreno } })}>Exibir</button>
                 </div>
               </div>
