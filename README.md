@@ -29,7 +29,7 @@ para obter notas sobre a implantação do projeto em um sistema ativo.
 - [ChartJS](https://www.chartjs.org/docs/latest/getting-started/usage.html)
 
 
-### Installing
+### Instalação
 
 Uma série passo a passo de exemplos que mostram como obter um desenvolvimento
 ambiente em execução
@@ -55,3 +55,7 @@ Após os passos acima o projeto será aberto na página web http://localhost:517
 - Commit suas alterações (git commit -am '[Mensagem]')
 - Dê push na branch (git push origin feature/[feature-name])
 - Abra um PR (Pull Request)
+
+## Licença
+
+Este software está sobre a licença [MIT](https://github.com/jojosuelobo/agroview-v3/blob/main/LICENSE) © [NHN Cloud](https://github.com/nhn).
